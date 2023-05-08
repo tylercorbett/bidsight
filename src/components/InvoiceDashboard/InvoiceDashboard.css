@@ -17,16 +17,17 @@
   margin-top: 1rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 27rem;
 }
 
 .filter {
   border: none;
   font-size: 1.3rem;
   background-color: transparent;
-  margin-right: 2.4rem;
   font-weight: 400;
   color: gray;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .filter:hover {
