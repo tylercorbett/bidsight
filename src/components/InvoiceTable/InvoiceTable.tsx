@@ -28,14 +28,16 @@ function createData(
     id,
     history: [
       {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
+        label: 'Drywall installation',
+        cost: '2800.00'
       },
       {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
+        label: 'Carpentry work:',
+        cost: '1650.00'
+      },
+      {
+        label: 'Lumber wood 2x4',
+        cost: '1200.00'
       },
     ],
   };
@@ -75,23 +77,17 @@ function Row(props: { row: ReturnType<typeof createData> }) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>Purchase</TableCell>
+                    <TableCell>Cost</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                    <TableRow key={historyRow.label}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
+                        {historyRow.label}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        placeholder history
-                      </TableCell>
+                      <TableCell>{historyRow.cost}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
