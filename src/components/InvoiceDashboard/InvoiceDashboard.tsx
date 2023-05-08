@@ -14,7 +14,10 @@ const InvoiceDashboard: React.FC = () => {
 
   return (
     <section className="InvoiceDashboard">
-      <h3 className='section-title'>Invoices</h3>
+      <div className='title-add-button-container'>
+        <h3 className='section-title'>Invoices</h3>
+        <button className='add-invoice-button'>+ Add new invoice</button>
+      </div>
       <div className='filters'>
         <button className={activeFilter === 'all' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('all')}>
           All
