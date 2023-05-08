@@ -1,3 +1,41 @@
 .InvoiceDashboard {
-  
+  margin: 2.2rem 2rem;
+  padding: 1rem;
+  border-radius: .2rem;
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  color: #222944;
+}
+
+.filters {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.filter {
+  border: none;
+  font-size: 1.3rem;
+  background-color: transparent;
+  margin-right: 2.4rem;
+  font-weight: 400;
+  color: gray;
+  cursor: pointer;
+}
+
+.filter:hover {
+  filter: brightness(120%);
+}
+
+.active-filter {
+  color: #5B9DDF;
+  text-decoration: underline;
+  font-weight: 700;
+  pointer-events: none;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import InvoiceDashboard from '../InvoiceDashboard/InvoiceDashboard';
 import SideNav from '../SideNav/SideNav';
 import './App.css';
 
@@ -18,6 +19,7 @@ const App: React.FC = () => {
             />
           </div>
         </header>
+        <InvoiceDashboard />
       </section>
     </div>
   );
