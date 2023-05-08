@@ -14,12 +14,12 @@ const SideNav = () => {
       </div>
       <div className='nav-section'>
         <p className='nav-section-label'>COMPONENTS</p>
-          <div className='dashboard-container spread-items'>
-            <span className='align-horizontal'>
-              <Chart className='nav-icon'/>
-              <h2 className='nav-label'>Charts</h2>
-            </span>
-            <ChevronRight />
+        <div className='dashboard-container spread-items'>
+          <span className='align-horizontal'>
+            <Chart className='nav-icon'/>
+            <h2 className='nav-label'>Charts</h2>
+          </span>
+          <ChevronRight />
         </div>
       </div>
     </nav>
