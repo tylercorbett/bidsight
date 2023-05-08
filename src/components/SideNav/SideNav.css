@@ -20,6 +20,9 @@ h1 {
   cursor: pointer;
 }
 
+.dashboard-container:hover {
+  background-color: #464B62;}
+
 .active {
   background-color: #464B62;
   margin-bottom: 2rem;
