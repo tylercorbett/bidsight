@@ -6,7 +6,6 @@ const SideNav = () => {
   return (
     <nav className="SideNav">
       <h1>BidSight</h1>
-
       <div className='dashboard-container'>
         <DashboardIcon className='nav-icon'/>
         <h2 className='nav-label'>Dashboard</h2>
