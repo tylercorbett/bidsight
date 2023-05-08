@@ -21,7 +21,7 @@ const SideNav = () => {
       </div>
       <div className='dashboard-container active'>
         <DashboardIcon className='nav-icon'/>
-        <h2 className='nav-label'>Dashboard</h2>
+        <h2 className='nav-label'>Invoice Dashboard</h2>
       </div>
       <div className='nav-section'>
         <p className='nav-section-label'>COMPONENTS</p>
