@@ -1,6 +1,11 @@
 .SideNav {
   background-color: #272C48;
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 1.2rem 1.5rem;
 }
 
+h1 {
+  font-weight: 400;
+  text-align: left;
+  font-size: 1.2rem;
+}
