@@ -2,7 +2,7 @@ import React from 'react';
 import SideNav from '../SideNav/SideNav';
 import './App.css';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
       <SideNav />

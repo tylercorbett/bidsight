@@ -4,7 +4,7 @@ import { MdDashboard as DashboardIcon } from 'react-icons/md';
 import { BsChevronRight as ChevronRight, BsBookHalf as Book } from 'react-icons/bs';
 import { AiFillPieChart as Chart, AiOutlineOrderedList as List } from 'react-icons/ai';
 
-const SideNav = () => {
+const SideNav: React.FC = () => {
   return (
     <nav className="SideNav">
       <div className='bidsight-logo-text-container align-horizontal'>
