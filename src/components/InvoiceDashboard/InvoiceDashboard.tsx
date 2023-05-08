@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
@@ -16,7 +17,9 @@ const InvoiceDashboard: React.FC = () => {
     <section className="InvoiceDashboard">
       <div className='title-add-button-container'>
         <h3 className='section-title'>Invoices</h3>
-        <button className='add-invoice-button'>+ Add new invoice</button>
+        <span className='add-button-container'>
+          <Button variant='contained'>+ Add new invoice</Button>
+        </span>
       </div>
       <div className='filters'>
         <button className={activeFilter === 'all' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('all')}>
