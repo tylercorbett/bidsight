@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
 
 const defaultFilterClass = 'filter';
@@ -31,6 +32,9 @@ const InvoiceDashboard: React.FC = () => {
           Late
         </button>
       </div>
+      <section className='table-container'>
+        <InvoiceTable />
+      </section>
     </section>
   );
 }

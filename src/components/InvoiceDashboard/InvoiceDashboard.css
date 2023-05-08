@@ -15,6 +15,7 @@
 
 .filters {
   margin-top: 1rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,4 +40,8 @@
   text-decoration: underline;
   font-weight: 700;
   pointer-events: none;
+}
+
+.table-container {
+  background: red;
 }
