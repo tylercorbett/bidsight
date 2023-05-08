@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
 import './InvoiceDashboard.css';
 
+const defaultFilterClass = 'filter';
+const activeFilterClass = defaultFilterClass + ' active-filter';
+
 const InvoiceDashboard: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+
+  const handleClick = (buttonId: string) => {
+    setActiveFilter(buttonId);
+  };
+
   return (
     <section className="InvoiceDashboard">
       <h3 className='section-title'>Invoices</h3>
       <div className='filters'>
-        <button className='filter active-filter' onClick={() => setActiveFilter('all')}>
+        <button className={activeFilter === 'all' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('all')}>
           All
         </button>
-        <button className='filter' onClick={() => setActiveFilter('due')}>
+        <button className={activeFilter === 'due' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('due')}>
           Due
         </button>
-        <button className='filter' onClick={() => setActiveFilter('paid')}>
+        <button className={activeFilter === 'paid' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('paid')}>
           Paid
         </button>
-        <button className='filter' onClick={() => setActiveFilter('unpaid')}>
+        <button className={activeFilter === 'unpaid' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('unpaid')}>
           Unpaid
         </button>
-        <button className='filter' onClick={() => setActiveFilter('late')}>
+        <button className={activeFilter === 'late' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('late')}>
           Late
         </button>
       </div>
