@@ -7,7 +7,18 @@ import { AiFillPieChart as Chart, AiOutlineOrderedList as List } from 'react-ico
 const SideNav = () => {
   return (
     <nav className="SideNav">
-      <h1>BidSight</h1>
+      <div className='bidsight-logo-text-container align-horizontal'>
+        <img 
+          src='https://res.cloudinary.com/dmtn5fbdu/image/upload/v1683565493/bidsight-logo-black.svg'
+          alt='BidSight logo'
+          className='bidsight-logo'
+        />
+        <img 
+          src='https://res.cloudinary.com/dmtn5fbdu/image/upload/v1683565427/bidsight-text.svg'
+          alt='BidSight text'
+          className='bidsight-text-logo'
+        />
+      </div>
       <div className='dashboard-container active'>
         <DashboardIcon className='nav-icon'/>
         <h2 className='nav-label'>Dashboard</h2>
