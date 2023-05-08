@@ -1,8 +1,35 @@
 .App {
   text-align: center;
   background: #FAFAFA;
+  height: 30rem;
 }
 
 header {
   background: #FFF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: .9rem;
+  height: 4rem;
+  padding: 0 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.avatar-container {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: '';
+  background-size: cover;
+  margin-left: .8rem;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 4.5rem;
+  margin-left: 1.2rem;
 }
