@@ -14,17 +14,40 @@ h1 {
 .dashboard-container {
   display: flex;
   align-items: center;
-  background-color: #464B62;
   border-radius: .2rem;
   padding: 1rem;
   cursor: pointer;
+  margin-bottom: 5rem;
+}
+
+.active {
+  background-color: #464B62;
 }
 
 .nav-icon {
-  margin-right: .3rem;
+  margin-right: .6rem;
   font-size: 1.2rem;
 }
 
 .nav-label {
   font-weight: 200;
+}
+
+.nav-section-label {
+  font-weight: 200;
+  text-align: left;
+  font-size: .8rem;
+}
+
+.nav-section {
+  padding: 1rem;
+}
+
+.spread-items {
+  justify-content: space-between;
+}
+
+.align-horizontal {
+  display: flex;
+  align-items: center;
 }
