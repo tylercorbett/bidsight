@@ -16,7 +16,6 @@ h1 {
   align-items: center;
   border-radius: .2rem;
   padding: 1rem;
-  padding-right: 0;
   cursor: pointer;
 }
 
@@ -46,6 +45,7 @@ h1 {
 
 .nav-section {
   padding: 1rem;
+  padding-right: 0;
 }
 
 .spread-items {
