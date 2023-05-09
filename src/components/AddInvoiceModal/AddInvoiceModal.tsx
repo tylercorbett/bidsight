@@ -37,20 +37,27 @@ interface Invoice {
   name: string,
   category: string,
   dueDate:  string,
+  status: string
 }
 
 const defaultState = {
   name: '',
   category: '',
-  dueDate: '01/25/2024',
+  dueDate: '',
   status: 'outstanding'
 };
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
-  const [newInvoice, setNewInvoice] = useState(defaultState);
+  const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
+
 
   const handleConfirmClicked = () => {
-    handleSubmit(newInvoice);
+    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
+    if (isInvalid) {
+      alert('Name, category, and due date are required');
+    } else {
+      handleSubmit(newInvoice);
+    }
   };
 
   const handleInputChange = (inputValue: string, inputID: string) => {
