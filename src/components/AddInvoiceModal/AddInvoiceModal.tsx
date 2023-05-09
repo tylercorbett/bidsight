@@ -9,9 +9,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
-import { Invoice } from '../../types/invoice';
+import { Invoice, Charge } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -25,7 +24,7 @@ const style = {
   p: 4,
   display: 'flex',
   flexDirection: 'column',
-  minHeight: '30rem',
+  minHeight: '50rem',
   justifyContent: 'space-between'
 };
 
@@ -40,18 +39,25 @@ const defaultState = {
   name: '',
   category: '',
   dueDate: '',
-  status: 'outstanding'
+  status: 'outstanding',
+};
+
+const defaultChargeState = {
+  name: '',
+  value: ''
 };
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
+  const [charges, setCharges] = useState<Charge[]>([]);
+  const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
-      handleSubmit(newInvoice);
+      handleSubmit({...newInvoice, charges});
     }
   };
 
@@ -64,6 +70,16 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   const handleDateChange = (newDate: any) => {
     const formattedDate = newDate.toFormat('MM/dd/yyyy');
     handleInputChange(formattedDate, 'dueDate')
+  };
+
+  const handleCurrentChargeChange = (inputValue: string, inputID: string) => {
+    let newChargeState = {...newCharge};
+    newChargeState[inputID as keyof Charge] = inputValue;
+    setNewCharge(newChargeState);
+  };
+
+  const handleAddChargeClicked = () => {
+    setCharges([...charges, newCharge]);
   };
 
   return (
@@ -107,6 +123,28 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
             <FormControlLabel value="draft" control={<Radio />} label="Draft" />
           </RadioGroup>
         </FormControl>
+        <Box>
+          <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
+            Charges
+          </Typography>
+          <TextField 
+            id="outlined-basic" 
+            label="Name" 
+            variant="outlined" 
+            required 
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              handleCurrentChargeChange(event.target.value, 'name');
+            }}/>
+          <TextField 
+            id="outlined-basic" 
+            label="Value" 
+            variant="outlined" 
+            required 
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              handleCurrentChargeChange(event.target.value, 'value');
+            }}/>
+            <Button onClick={handleAddChargeClicked}>Add Charge</Button>
+        </Box>
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
       </Box>
       </Modal>
