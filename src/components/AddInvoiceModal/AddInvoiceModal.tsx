@@ -9,7 +9,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
+import { Invoice } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -33,12 +35,6 @@ interface Props {
   handleSubmit: (invoice: any) => void
 };
 
-interface Invoice {
-  name: string,
-  category: string,
-  dueDate:  string,
-  status: string
-}
 
 const defaultState = {
   name: '',
