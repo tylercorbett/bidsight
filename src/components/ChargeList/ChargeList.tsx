@@ -16,14 +16,14 @@ const ChargeList: React.FC<Props> = ({ charges, handleDeleteChargeClicked }) => 
     <List sx={{ width: '100%', margin: '0', paddingTop: '0' }}>
       {charges.map((charge) => (
         <ListItem
-          key={`${charge.label}-${charge.value}`}
+          key={`${charge.label}-${charge.cost}`}
           secondaryAction={
             <IconButton aria-label="delete" onClick={() => handleDeleteChargeClicked(charge)}>
               <RemoveCircleOutlineIcon  color='error'/>
             </IconButton>
           }
         >
-          <ListItemText primary={`$${charge.value} - ${charge.label}`} />
+          <ListItemText primary={`$${charge.cost} - ${charge.label}`} />
         </ListItem>
       ))}
     </List>

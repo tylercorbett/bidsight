@@ -47,7 +47,7 @@ const defaultState = {
 
 const defaultChargeState = {
   label: '',
-  value: ''
+  cost: ''
 };
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
@@ -167,11 +167,11 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
             }}/>
           <TextField 
             id="outlined-basic" 
-            label="Value" 
+            label="Cost" 
             variant="outlined" 
             required 
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              handleCurrentChargeChange(event.target.value, 'value');
+              handleCurrentChargeChange(event.target.value, 'cost');
             }}/>
           <Button onClick={handleAddChargeClicked}>Add Charge</Button>
         </Box>

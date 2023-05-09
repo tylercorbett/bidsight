@@ -1,6 +1,6 @@
 export interface Charge {
   label: string,
-  value: string
+  cost: string
 }
 
 export type Invoice = {
