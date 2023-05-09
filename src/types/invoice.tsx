@@ -1,5 +1,5 @@
 export interface Charge {
-  name: string,
+  label: string,
   value: string
 }
 

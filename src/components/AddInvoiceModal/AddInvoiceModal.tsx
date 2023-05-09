@@ -46,7 +46,7 @@ const defaultState = {
 };
 
 const defaultChargeState = {
-  name: '',
+  label: '',
   value: ''
 };
 
@@ -79,6 +79,8 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   };
 
   const handleCurrentChargeChange = (inputValue: string, inputID: string) => {
+    console.log(inputValue, 'inputValue');
+    console.log(inputID, 'inputID');
     let newChargeState = {...newCharge};
     newChargeState[inputID as keyof Charge] = inputValue;
     setNewCharge(newChargeState);
@@ -157,11 +159,11 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
           }
           <TextField 
             id="outlined-basic" 
-            label="Name" 
+            label="Label" 
             variant="outlined" 
             required 
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              handleCurrentChargeChange(event.target.value, 'name');
+              handleCurrentChargeChange(event.target.value, 'label');
             }}/>
           <TextField 
             id="outlined-basic" 
