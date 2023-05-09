@@ -6,7 +6,7 @@ import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
 
 const InvoiceDashboard: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
 
   return (
     <section className="InvoiceDashboard">
