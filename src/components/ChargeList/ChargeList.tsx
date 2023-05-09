@@ -7,17 +7,18 @@ import IconButton from '@mui/material/IconButton';
 import { Charge } from '../../types/invoice';
 
 interface Props {
-  charges: Charge[]
+  charges: Charge[],
+  handleDeleteChargeClick: (chargeToDelete: Charge) => void
 }
 
-const ChargeList: React.FC<Props> = ({ charges }) => {
+const ChargeList: React.FC<Props> = ({ charges, handleDeleteChargeClick }) => {
   return (
     <List sx={{ width: '100%', margin: '0', paddingTop: '0' }}>
       {charges.map((charge) => (
         <ListItem
           key={`${charge.name}-${charge.value}`}
           secondaryAction={
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={() => handleDeleteChargeClick(charge)}>
               <RemoveCircleOutlineIcon  color='error'/>
             </IconButton>
           }

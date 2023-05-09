@@ -87,6 +87,10 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     setNewCharge(defaultChargeState);
   };
 
+  const handleDeleteChargeClick = (chargeToDelete: Charge) => {
+    console.log('charge to delete', chargeToDelete);
+  };  
+
   return (
     <Modal
       open={isModalOpen}
@@ -140,6 +144,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
           {charges.length > 0 
           ? <ChargeList 
               charges={charges}
+              handleDeleteChargeClick={handleDeleteChargeClick}
             /> 
           : 
             <Typography id="charges-title" variant="body1" marginBottom=".6rem" color='gray'>
