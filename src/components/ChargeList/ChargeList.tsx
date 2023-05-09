@@ -8,17 +8,17 @@ import { Charge } from '../../types/invoice';
 
 interface Props {
   charges: Charge[],
-  handleDeleteChargeClick: (chargeToDelete: Charge) => void
+  handleDeleteChargeClicked: (chargeToDelete: Charge) => void
 }
 
-const ChargeList: React.FC<Props> = ({ charges, handleDeleteChargeClick }) => {
+const ChargeList: React.FC<Props> = ({ charges, handleDeleteChargeClicked }) => {
   return (
     <List sx={{ width: '100%', margin: '0', paddingTop: '0' }}>
       {charges.map((charge) => (
         <ListItem
           key={`${charge.name}-${charge.value}`}
           secondaryAction={
-            <IconButton aria-label="delete" onClick={() => handleDeleteChargeClick(charge)}>
+            <IconButton aria-label="delete" onClick={() => handleDeleteChargeClicked(charge)}>
               <RemoveCircleOutlineIcon  color='error'/>
             </IconButton>
           }
