@@ -56,9 +56,7 @@ const InvoiceDashboard: React.FC = () => {
   const [checkedFilters, setCheckedFilters] = useState([true, true, true, true]);
 
   const handleSubmit = (invoice: Invoice) => {
-    console.log('invoice submitted with ', invoice);
     const newInvoices: Invoice[] = [invoice, ...invoices];
-    console.log(newInvoices, 'newInvioces');
     setInvoices(newInvoices);
     setIsModalOpen(false);
   };
