@@ -25,6 +25,7 @@ const InvoiceDashboard: React.FC = () => {
       <AddInvoiceModal 
         isModalOpen={isModalOpen}
         handleClose={() => setIsModalOpen(false)}
+        handleSubmit={(invoice:any) => console.log(invoice)}
       />
     </section>
   );

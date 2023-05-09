@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -30,9 +30,29 @@ const style = {
 interface Props {
   isModalOpen: boolean,
   handleClose: () => void,
+  handleSubmit: (invoice: any) => void
 };
 
-const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose }) => {
+interface Invoice {
+  name: string,
+  category: string
+}
+
+const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
+  const [newInvoice, setNewInvoice] = useState({name: 'New siding', category: 'New Construction'});
+
+  const handleConfirmClicked = () => {
+    handleSubmit(newInvoice);
+  };
+
+  const handleInputChange = (inputValue: string, inputID: string) => {
+    console.log(`change ${inputID} to ${inputValue}`);
+    let newInvoiceState = {...newInvoice};
+    newInvoiceState[inputID as keyof Invoice] = inputValue;
+    console.log('newInvoiceState', newInvoiceState)
+    setNewInvoice(newInvoiceState);
+  };
+
   return (
     <Modal
       open={isModalOpen}
@@ -44,8 +64,22 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose }) => {
         <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
           Add new invoice
         </Typography>
-        <TextField id="outlined-basic" label="Name" variant="outlined" />
-        <TextField id="outlined-basic" label="Category" variant="outlined" />
+        <TextField 
+          id="outlined-basic" 
+          label="Name" 
+          variant="outlined" 
+          required 
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            handleInputChange(event.target.value, 'name');
+          }}/>
+        <TextField 
+          id="outlined-basic" 
+          label="Category" 
+          variant="outlined" 
+          required 
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            handleInputChange(event.target.value, 'category');
+          }}/>
         <DatePicker label='Due date' />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
@@ -59,7 +93,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose }) => {
             <FormControlLabel value="draft" control={<Radio />} label="Draft" />
           </RadioGroup>
         </FormControl>
-        <Button variant='contained' type='submit'>Confirm</Button>
+        <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
       </Box>
       </Modal>
   );
