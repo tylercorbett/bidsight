@@ -52,14 +52,14 @@ const rows = [
 
 const InvoiceDashboard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [invoices, setInvoices] = useState(rows);
+  const [invoices, setInvoices] = useState<Invoice[]>(rows);
   const [checkedFilters, setCheckedFilters] = useState([true, true, true, true]);
 
   const handleSubmit = (invoice: Invoice) => {
     console.log('invoice submitted with ', invoice);
     const newInvoices: Invoice[] = [invoice, ...invoices];
     console.log(newInvoices, 'newInvioces');
-    // setInvoices(newInvoices);
+    setInvoices(newInvoices);
     setIsModalOpen(false);
   };
 
