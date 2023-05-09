@@ -51,7 +51,7 @@ const defaultChargeState = {
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
-  const [charges, setCharges] = useState<Charge[]>([{name: 'Fix siding', value: '550.00'}]);
+  const [charges, setCharges] = useState<Charge[]>([]);
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
   const handleConfirmClicked = () => {
