@@ -8,6 +8,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,7 +23,7 @@ const style = {
   p: 4,
   display: 'flex',
   flexDirection: 'column',
-  minHeight: '20rem',
+  minHeight: '30rem',
   justifyContent: 'space-between'
 };
 
@@ -42,6 +44,9 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose }) => {
         <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
           Add new invoice
         </Typography>
+        <TextField id="outlined-basic" label="Name" variant="outlined" />
+        <TextField id="outlined-basic" label="Category" variant="outlined" />
+        <DatePicker label='Due date' />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
