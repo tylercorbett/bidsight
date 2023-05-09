@@ -54,10 +54,8 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   };
 
   const handleInputChange = (inputValue: string, inputID: string) => {
-    console.log(`change ${inputID} to ${inputValue}`);
     let newInvoiceState = {...newInvoice};
     newInvoiceState[inputID as keyof Invoice] = inputValue;
-    console.log('newInvoiceState', newInvoiceState)
     setNewInvoice(newInvoiceState);
   };
 
