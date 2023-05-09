@@ -50,7 +50,6 @@ const defaultState = {
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
 
-
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
     if (isInvalid) {
