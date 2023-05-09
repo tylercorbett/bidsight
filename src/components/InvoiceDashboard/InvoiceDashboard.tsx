@@ -20,7 +20,7 @@ export function createData(
     category,
     dueDate,
     id,
-    history: [
+    charges: [
       {
         label: 'Drywall installation',
         cost: '2800.00'
@@ -57,6 +57,9 @@ const InvoiceDashboard: React.FC = () => {
 
   const handleSubmit = (invoice: Invoice) => {
     console.log('invoice submitted with ', invoice);
+    const newInvoices: Invoice[] = [invoice, ...invoices];
+    console.log(newInvoices, 'newInvioces');
+    // setInvoices(newInvoices);
     setIsModalOpen(false);
   };
 

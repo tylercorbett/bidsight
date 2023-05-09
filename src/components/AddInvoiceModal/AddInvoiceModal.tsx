@@ -42,7 +42,7 @@ const defaultState = {
   name: '',
   category: '',
   dueDate: '',
-  status: 'outstanding'
+  status: 'Outstanding'
 };
 
 const defaultChargeState = {

@@ -52,13 +52,13 @@ const Row:React.FC<RowProps> = ({ row }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.label}>
+                  {row.charges.map((chargeRow) => (
+                    <TableRow key={chargeRow.label}>
                       <TableCell component="th" scope="row">
-                        {historyRow.cost}
+                        {chargeRow.cost}
                       </TableCell>
                       <TableCell>
-                        {historyRow.label}
+                        {chargeRow.label}
                       </TableCell>
                     </TableRow>
                   ))}
