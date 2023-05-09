@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Invoice } from '../../types/invoice';
+import { filterObjectsByStatus } from '../../utils/filterInvoices';
 import AddInvoiceModal from '../AddInvoiceModal/AddInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
@@ -44,8 +45,8 @@ const rows = [
   createData('HVAC Replacement', 'Outstanding', 'Repairs', '06/05/2022', 5),
   createData('Paint Siding', 'Paid', 'Painting', '01/05/2023', 6),
   createData('Loft Renovation', 'Draft', 'Renovations', '06/07/2023', 7),
-  createData('HVAC Replacement', 'Paid', 'Repairs', '03/05/2023', 8),
-  createData('HVAC Replacement', 'Paid', 'Repairs', '09/12/2023', 9),
+  createData('Fix sinkt', 'Paid', 'Repairs', '03/05/2023', 8),
+  createData('Fix door', 'Paid', 'Repairs', '09/12/2023', 9),
 ];
 
 
@@ -57,6 +58,11 @@ const InvoiceDashboard: React.FC = () => {
     console.log('invoice submitted with ', invoice);
     setIsModalOpen(false);
   };
+
+  const filteredInvoices = filterObjectsByStatus(invoices, 'Draft');
+
+  console.log(invoices, 'all');
+  console.log(filteredInvoices, 'filtered');
 
   return (
     <section className="InvoiceDashboard">
@@ -71,7 +77,7 @@ const InvoiceDashboard: React.FC = () => {
       <InvoiceFilters />
       <section className='table-container'>
         <InvoiceTable 
-          rows={invoices}
+          rows={filteredInvoices}
         />
       </section>
       <AddInvoiceModal 
