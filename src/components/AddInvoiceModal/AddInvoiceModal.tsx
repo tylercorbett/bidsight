@@ -35,11 +35,12 @@ interface Props {
 
 interface Invoice {
   name: string,
-  category: string
+  category: string,
+  dueDate:  string,
 }
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
-  const [newInvoice, setNewInvoice] = useState({name: 'New siding', category: 'New Construction'});
+  const [newInvoice, setNewInvoice] = useState({name: 'New siding', category: 'New Construction', dueDate: '05/31/2023'});
 
   const handleConfirmClicked = () => {
     handleSubmit(newInvoice);
@@ -51,6 +52,11 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     newInvoiceState[inputID as keyof Invoice] = inputValue;
     console.log('newInvoiceState', newInvoiceState)
     setNewInvoice(newInvoiceState);
+  };
+
+  const handleDateChange = (newDate: any) => {
+    const formattedDate = newDate.toFormat('MM/dd/yyyy');
+    handleInputChange(formattedDate, 'dueDate')
   };
 
   return (
@@ -80,7 +86,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             handleInputChange(event.target.value, 'category');
           }}/>
-        <DatePicker label='Due date' />
+        <DatePicker label='Due date' onChange={(newValue) => handleDateChange(newValue)} />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
