@@ -50,16 +50,18 @@ const defaultChargeState = {
 
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
-  const [charges, setCharges] = useState<Charge[]>([]);
+  const [charges, setCharges] = useState<Charge[]>([{name: 'Fix siding', value: '550.00'}]);
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
-  // {name: 'Fix siding', value: '550.00'}
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
       handleSubmit({...newInvoice, charges});
+      setNewInvoice(defaultState);
+      setNewCharge(defaultChargeState);
+      setCharges([]);
     }
   };
 
@@ -82,6 +84,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
 
   const handleAddChargeClicked = () => {
     setCharges([...charges, newCharge]);
+    setNewCharge(defaultChargeState);
   };
 
   return (
@@ -160,7 +163,6 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
               handleCurrentChargeChange(event.target.value, 'value');
             }}/>
           <Button onClick={handleAddChargeClicked}>Add Charge</Button>
-          
         </Box>
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
       </Box>

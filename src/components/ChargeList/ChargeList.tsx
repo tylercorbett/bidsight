@@ -12,7 +12,7 @@ interface Props {
 
 const ChargeList: React.FC<Props> = ({ charges }) => {
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List sx={{ width: '100%', margin: '0', paddingTop: '0' }}>
       {charges.map((charge) => (
         <ListItem
           key={`${charge.name}-${charge.value}`}
