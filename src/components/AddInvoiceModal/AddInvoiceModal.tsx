@@ -54,7 +54,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose }) => {
             <FormControlLabel value="draft" control={<Radio />} label="Draft" />
           </RadioGroup>
         </FormControl>
-        <Button variant='contained'>Confirm</Button>
+        <Button variant='contained' type='submit'>Confirm</Button>
       </Box>
       </Modal>
   );
