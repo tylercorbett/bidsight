@@ -39,8 +39,15 @@ interface Invoice {
   dueDate:  string,
 }
 
+const defaultState = {
+  name: '',
+  category: '',
+  dueDate: '01/25/2024',
+  status: 'outstanding'
+};
+
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
-  const [newInvoice, setNewInvoice] = useState({name: 'New siding', category: 'New Construction', dueDate: '05/31/2023'});
+  const [newInvoice, setNewInvoice] = useState(defaultState);
 
   const handleConfirmClicked = () => {
     handleSubmit(newInvoice);
@@ -93,6 +100,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="outstanding"
             name="radio-buttons-group"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
           >
             <FormControlLabel value="outstanding" control={<Radio />} label="Outstanding" />
             <FormControlLabel value="paid" control={<Radio />} label="Paid" />
