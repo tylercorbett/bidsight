@@ -13,7 +13,7 @@ export const isLate = (dateString: string, status: string): boolean => {
   // Comparing the provided date with today's date
   const isDayBeforeToday = providedDate < today;
 
-  if (isDayBeforeToday && (status === 'outstanding')) {
+  if (isDayBeforeToday && (status === 'Outstanding')) {
     return true;
   } 
   else {

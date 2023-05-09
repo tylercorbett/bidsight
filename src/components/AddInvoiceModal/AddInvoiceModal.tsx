@@ -132,13 +132,13 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="outstanding"
+            defaultValue="Outstanding"
             name="radio-buttons-group"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
           >
-            <FormControlLabel value="outstanding" control={<Radio />} label="Outstanding" />
-            <FormControlLabel value="paid" control={<Radio />} label="Paid" />
-            <FormControlLabel value="draft" control={<Radio />} label="Draft" />
+            <FormControlLabel value="Outstanding" control={<Radio />} label="Outstanding" />
+            <FormControlLabel value="Paid" control={<Radio />} label="Paid" />
+            <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
           </RadioGroup>
         </FormControl>
         <Box>
