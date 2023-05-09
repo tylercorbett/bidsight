@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
+import { Invoice } from '../../types/invoice';
 import AddInvoiceModal from '../AddInvoiceModal/AddInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
@@ -7,6 +8,11 @@ import './InvoiceDashboard.css';
 
 const InvoiceDashboard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+
+  const handleSubmit = (invoice: Invoice) => {
+    console.log('invoice submitted with ', invoice);
+    setIsModalOpen(false);
+  };
 
   return (
     <section className="InvoiceDashboard">
@@ -25,7 +31,7 @@ const InvoiceDashboard: React.FC = () => {
       <AddInvoiceModal 
         isModalOpen={isModalOpen}
         handleClose={() => setIsModalOpen(false)}
-        handleSubmit={(invoice:any) => console.log(invoice)}
+        handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
       />
     </section>
   );

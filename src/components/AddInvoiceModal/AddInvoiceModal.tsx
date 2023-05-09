@@ -12,6 +12,7 @@ import TextField from '@mui/material/TextField';
 import { Invoice, Charge } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ChargeList from '../ChargeList/ChargeList';
+import { removeCharge } from '../../utils/removeCharge';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -88,8 +89,9 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   };
 
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
-    let 
-    console.log('charge to delete', chargeToDelete);
+    const chargesCopy = [...charges];
+    const newChargesState = removeCharge(chargeToDelete, chargesCopy);
+    setCharges(newChargesState);
   };  
 
   return (
