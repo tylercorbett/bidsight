@@ -20,17 +20,19 @@ interface RowProps {
 const Row:React.FC<RowProps> = ({ row }) => {
   const [open, setOpen] = useState(false);
 
+  const hasCharges = row.charges.length > 0;
+
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
-          <IconButton
+          {hasCharges && <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
           >
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
+          </IconButton>}
         </TableCell>
         <TableCell component="th" scope="row">
           {row.name}
@@ -40,7 +42,7 @@ const Row:React.FC<RowProps> = ({ row }) => {
         <TableCell align="right">{row.dueDate}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
       </TableRow>
-      <TableRow>
+      {hasCharges && <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
@@ -67,7 +69,7 @@ const Row:React.FC<RowProps> = ({ row }) => {
             </Box>
           </Collapse>
         </TableCell>
-      </TableRow>
+      </TableRow>}
     </React.Fragment>
   );
 }
