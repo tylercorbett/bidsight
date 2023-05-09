@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
+import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
 
@@ -21,23 +22,7 @@ const InvoiceDashboard: React.FC = () => {
           <Button variant='contained'>+ Add new invoice</Button>
         </span>
       </div>
-      <div className='filters'>
-        <button className={activeFilter === 'all' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('all')}>
-          All
-        </button>
-        <button className={activeFilter === 'due' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('due')}>
-          Due
-        </button>
-        <button className={activeFilter === 'paid' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('paid')}>
-          Paid
-        </button>
-        <button className={activeFilter === 'unpaid' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('unpaid')}>
-          Unpaid
-        </button>
-        <button className={activeFilter === 'late' ? activeFilterClass : defaultFilterClass} onClick={() => handleClick('late')}>
-          Late
-        </button>
-      </div>
+      <InvoiceFilters />
       <section className='table-container'>
         <InvoiceTable />
       </section>
