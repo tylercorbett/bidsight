@@ -69,26 +69,25 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         <TableCell align="right">{row.id}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Charges
-              </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Purchase</TableCell>
                     <TableCell>Cost</TableCell>
+                    <TableCell>Purchase</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.history.map((historyRow) => (
                     <TableRow key={historyRow.label}>
                       <TableCell component="th" scope="row">
+                        {historyRow.cost}
+                      </TableCell>
+                      <TableCell>
                         {historyRow.label}
                       </TableCell>
-                      <TableCell>{historyRow.cost}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
