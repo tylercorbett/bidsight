@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import './InvoiceFilters.css';
 
 export default function InvoiceFilters() {
-  const [checked, setChecked] = useState([true, false, false]);
+  const [checked, setChecked] = useState([true, true, true]);
 
   const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked([event.target.checked, event.target.checked, event.target.checked]);
@@ -40,7 +41,7 @@ export default function InvoiceFilters() {
   );
 
   return (
-    <div>
+    <div className='InvoiceFilters'>
       <FormControlLabel
         label="All"
         control={
