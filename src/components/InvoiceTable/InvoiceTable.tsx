@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -42,9 +42,9 @@ function createData(
   };
 }
 
-function Row(props: { row: ReturnType<typeof createData> }) {
+const Row = (props: { row: ReturnType<typeof createData> }) => {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <React.Fragment>
@@ -111,7 +111,7 @@ const rows = [
 ];
 
 
-export default function InvoiceTable() {
+const InvoiceTable = () => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -134,3 +134,5 @@ export default function InvoiceTable() {
     </TableContainer>
   );
 }
+
+export default InvoiceTable;

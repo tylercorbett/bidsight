@@ -8,6 +8,7 @@ import './InvoiceDashboard.css';
 
 const InvoiceDashboard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [invoices, setInvoices] = useState([]);
 
   const handleSubmit = (invoice: Invoice) => {
     console.log('invoice submitted with ', invoice);
@@ -26,7 +27,9 @@ const InvoiceDashboard: React.FC = () => {
       </div>
       <InvoiceFilters />
       <section className='table-container'>
-        <InvoiceTable />
+        <InvoiceTable 
+          // invoices={invoices}
+        />
       </section>
       <AddInvoiceModal 
         isModalOpen={isModalOpen}
