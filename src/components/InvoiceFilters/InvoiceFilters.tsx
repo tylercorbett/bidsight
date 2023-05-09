@@ -28,7 +28,7 @@ export default function InvoiceFilters() {
   };
 
   const children = (
-    <Box sx={{ display: 'flex', flexDirection: 'row', ml: 3 }}>
+    <Box sx={{ display: 'flex', ml: 3 }}>
       <FormControlLabel
         label="Paid"
         control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
