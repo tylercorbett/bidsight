@@ -42,8 +42,11 @@ function createData(
   };
 }
 
-const Row = (props: { row: ReturnType<typeof createData> }) => {
-  const { row } = props;
+interface Props {
+  row: ReturnType<typeof createData>
+}
+
+const Row:React.FC<Props> = ({ row }) => {
   const [open, setOpen] = useState(false);
 
   return (
