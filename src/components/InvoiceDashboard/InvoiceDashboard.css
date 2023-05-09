@@ -12,34 +12,6 @@
   color: #222944;
 }
 
-.filters {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 27rem;
-}
-
-.filter {
-  border: none;
-  font-size: 1.3rem;
-  background-color: transparent;
-  font-weight: 400;
-  color: gray;
-  cursor: pointer;  
-}
-
-.filter:hover {
-  filter: brightness(120%);
-}
-
-.active-filter {
-  color: #5B9DDF;
-  text-decoration: underline;
-  font-weight: 700;
-  pointer-events: none;
-}
 
 .table-container {
   

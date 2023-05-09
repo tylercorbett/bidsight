@@ -4,16 +4,7 @@ import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
 
-const defaultFilterClass = 'filter';
-const activeFilterClass = defaultFilterClass + ' active-filter';
-
 const InvoiceDashboard: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const handleClick = (buttonId: string) => {
-    setActiveFilter(buttonId);
-  };
-
   return (
     <section className="InvoiceDashboard">
       <div className='title-add-button-container'>
