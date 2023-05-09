@@ -103,7 +103,11 @@ const rows = [
   createData('Water Damage Repair', 'Draft', 'Painting', '12/08/2022', 2),
   createData('Window Replacement', 'Outstanding', 'Repairs', '01/25/2024', 3),
   createData('Kitchen Renovation', 'Outstanding', 'Renovations', '04/25/2023', 4),
-  createData('HVAC Replacement', 'Paid', 'Repairs', '06/05/20232', 5),
+  createData('HVAC Replacement', 'Outstanding', 'Repairs', '06/05/2022', 5),
+  createData('Paint Siding', 'Paid', 'Painting', '01/05/2023', 6),
+  createData('Loft Renovation', 'Draft', 'Renovations', '06/07/2023', 7),
+  createData('HVAC Replacement', 'Paid', 'Repairs', '03/05/2023', 8),
+  createData('HVAC Replacement', 'Paid', 'Repairs', '09/12/2023', 9),
 ];
 
 
