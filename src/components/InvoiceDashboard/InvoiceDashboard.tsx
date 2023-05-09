@@ -7,7 +7,7 @@ import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
 
 const InvoiceDashboard: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleSubmit = (invoice: Invoice) => {
     console.log('invoice submitted with ', invoice);
