@@ -12,6 +12,13 @@ export type Invoice = {
   id: number
 }
 
+export type InvoiceBody = {
+  name: string,
+  category: string,
+  due_date:  string,
+  status: string,
+}
+
 export enum InvoiceStatuses {
   Paid = 'Paid',
   Outstanding = 'Outstanding',

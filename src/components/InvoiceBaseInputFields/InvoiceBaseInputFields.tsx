@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Invoice, InvoiceStatuses } from '../../types/invoice';
+import { Invoice, InvoiceStatuses, InvoiceBody } from '../../types/invoice';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -12,10 +12,11 @@ import dayjs from 'dayjs';
 const today = dayjs().format('MM-DD-YYYY');
 
 interface Props {
-  invoice?: Invoice
+  invoice?: Invoice,
+  handleChange: (invoiceBody: InvoiceBody) => void,
 }
 
-const InvoiceBaseInputFields: React.FC<Props> = ({ invoice }) => {
+const InvoiceBaseInputFields: React.FC<Props> = ({ invoice, handleChange }) => {
   const [name, setName] = useState<string>(invoice?.name ?? '');
   const [category, setCategory] = useState<string>(invoice?.category ?? '');
   const [due_date, setDueDate] = useState<string>(invoice?.due_date ?? today);
@@ -28,7 +29,13 @@ const InvoiceBaseInputFields: React.FC<Props> = ({ invoice }) => {
 
   useEffect(() => {
     console.log('something changed')
-  }, [name, category, due_date, status])
+    handleChange({ 
+      name,
+      category,
+      due_date,
+      status
+    })
+  }, [name, category, due_date, status]);
 
   return (
     <>
