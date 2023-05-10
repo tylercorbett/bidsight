@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Invoice, Charge, InvoiceBody } from '../../types/invoice';
-import { removeCharge } from '../../utils/removeCharge';
 import Charges from '../Charges/Charges';
 import InvoiceBaseInputFields from '../InvoiceBaseInputFields/InvoiceBaseInputFields';
 import { modalBaseStyles } from '../shared/modalBaseStyles';
@@ -29,17 +28,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
       setCharges([]);
     }
   };
-
-  const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
-    const chargesCopy = [...charges];
-    const newChargesState = removeCharge(chargeToDelete, chargesCopy);
-    setCharges(newChargesState);
-  };  
-  
-  const handleAddChargeClicked = (chargeToAdd: Charge) => {
-    const newChargesState = [chargeToAdd, ...charges];
-    setCharges(newChargesState);
-  }; 
 
   return (
     <Modal
