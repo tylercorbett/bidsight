@@ -40,7 +40,6 @@ interface Props {
   handleSubmit: (invoice: any) => void
 };
 
-
 const defaultState = {
   name: '',
   category: '',
@@ -48,15 +47,16 @@ const defaultState = {
   status: InvoiceStatuses.Outstanding
 };
 
-const defaultChargeState = {
-  label: '',
-  cost: ''
-};
-
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<any>(defaultState);
   const [charges, setCharges] = useState<Charge[]>([]);
-  const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
+  const [cost, setCost] = useState<string>('');
+  const [label, setLabel] = useState<string>('');
+
+  const resetChargeFields = () => {
+    setCost('');
+    setLabel('');
+  };
 
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.due_date === '');
@@ -65,7 +65,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     } else {
       handleSubmit({...newInvoice, charges, id: getRandomNumber()});
       setNewInvoice(defaultState);
-      setNewCharge(defaultChargeState);
+      resetChargeFields();
       setCharges([]);
     }
   };
@@ -81,15 +81,10 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     handleInputChange(formattedDate, 'due_date')
   };
 
-  const handleCurrentChargeChange = (inputValue: string, inputID: string) => {
-    let newChargeState = {...newCharge};
-    newChargeState[inputID as keyof Charge] = inputValue;
-    setNewCharge(newChargeState);
-  };
-
   const handleAddChargeClicked = () => {
-    setCharges([...charges, newCharge]);
-    setNewCharge(defaultChargeState);
+    if (cost === '' || label === '') return;
+    setCharges([...charges, { cost, label }]);
+    resetChargeFields();
   };
 
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
@@ -163,18 +158,21 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
             id="outlined-basic" 
             label="Label" 
             variant="outlined" 
-            required 
+            required
+            value={label} 
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              handleCurrentChargeChange(event.target.value, 'label');
+              setLabel(event.target.value);
             }}/>
           <TextField 
             id="outlined-basic" 
             label="Cost" 
             variant="outlined" 
             required 
+            value={cost}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              handleCurrentChargeChange(event.target.value, 'cost');
-            }}/>
+              setCost(event.target.value);
+            }}
+          />
           <Button onClick={handleAddChargeClicked}>Add Charge</Button>
         </Box>
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
