@@ -14,7 +14,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ChargeList from '../ChargeList/ChargeList';
 import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -78,7 +78,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
   };
 
   const handleDateChange = (newDate: any) => {
-    const formattedDate = newDate.toFormat('MM/dd/yyyy');
+    const formattedDate = newDate.format('MM/DD/YYYY');
     handleInputChange(formattedDate, 'dueDate')
   };
 
