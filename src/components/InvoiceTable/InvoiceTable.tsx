@@ -17,6 +17,7 @@ import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
 import './InvoiceTable.css';
+import InvoicePieChart from '../InvoicePieChart/InvoicePieChart';
 
 interface RowProps {
   row: Invoice,
@@ -87,7 +88,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
                 </TableBody>
               </Table>
               <div className='chart-container'>
-                hello
+                <InvoicePieChart />
               </div>
             </Box>
           </Collapse>
