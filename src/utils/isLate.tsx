@@ -3,6 +3,7 @@ import { InvoiceStatuses } from "../types/invoice";
 export const isLate = (dateString: string, status: string): boolean => {
   const today = new Date();
   const dateParts = dateString.split(/[-/]/);
+  const upperCaseStatus = status.toUpperCase();
   
   // Parsing the date parts as integers (assuming MM-DD-YYYY or MM/DD/YYYY format)
   const month = parseInt(dateParts[0], 10);
@@ -14,9 +15,8 @@ export const isLate = (dateString: string, status: string): boolean => {
   
   // Comparing the provided date with today's date
   const isDayBeforeToday = providedDate < today;
-  console.log(status, 'isDayBeforeToday');
 
-  if (isDayBeforeToday && (status === 'OUTSTANDING')) {
+  if (isDayBeforeToday && (upperCaseStatus === 'OUTSTANDING')) {
     return true;
   } 
   else {

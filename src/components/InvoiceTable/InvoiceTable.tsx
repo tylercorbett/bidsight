@@ -27,7 +27,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
   const [open, setOpen] = useState(false);
 
   const hasCharges = row.charges.length > 0;
-  const isInvoiceLate = isLate(row.due_date, row.status as InvoiceStatuses);
+  const isInvoiceLate = isLate(row.due_date, row.status);
   const statusLabel = isInvoiceLate ? 'Late' : row.status;
   const statusColor = getInvoiceColorStatus(row);
 
