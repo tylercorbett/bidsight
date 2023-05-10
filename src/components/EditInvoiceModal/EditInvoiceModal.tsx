@@ -123,6 +123,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
           id="outlined-basic" 
           label="Category" 
           variant="outlined" 
+          defaultValue={invoice?.category}
           required 
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             handleInputChange(event.target.value, 'category');
