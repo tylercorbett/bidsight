@@ -48,7 +48,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
           {row.name}
         </TableCell>
         <TableCell align="right"><Chip color={statusColor} label={statusLabel} /></TableCell>
-        <TableCell align="right">{row.category}</TableCell>
+        <TableCell align="right" sx={{textTransform: 'capitalize'}}>{row.category}</TableCell>
         <TableCell align="right">{row.due_date}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">

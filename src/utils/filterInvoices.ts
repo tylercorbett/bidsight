@@ -5,16 +5,16 @@ function getStatuses(booleanArray: boolean[]): string[] {
   const statuses: string[] = [];
 
   if (booleanArray[0]) {
-    statuses.push('paid');
+    statuses.push(InvoiceStatuses.Paid);
   }
   if (booleanArray[1]) {
-    statuses.push('outstanding');
+    statuses.push(InvoiceStatuses.Outstanding);
   }
   if (booleanArray[2]) {
     statuses.push('Late');
   }
   if (booleanArray[3]) {
-    statuses.push('draft');
+    statuses.push(InvoiceStatuses.Draft);
   }
 
   return statuses;
