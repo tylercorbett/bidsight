@@ -103,6 +103,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
             handleInputChange(event.target.value, 'name');
           }}
         />
+        <br />
         <TextField 
           id="outlined-basic" 
           label="Category" 
@@ -113,11 +114,13 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
             handleInputChange(event.target.value, 'category');
           }}
         />
+        <br />
         <DatePicker 
           label='Due date' 
           onChange={(newValue) => handleDateChange(newValue)} 
           defaultValue={dayjs(invoice?.due_date)}
         />
+        <br />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
@@ -131,6 +134,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
             <FormControlLabel value={InvoiceStatuses.Draft} control={<Radio />} label={InvoiceStatuses.Draft} />
           </RadioGroup>
         </FormControl>
+        <br />
         <Charges 
           charges={charges}
           handleAddChargeClicked={handleAddChargeClicked}
