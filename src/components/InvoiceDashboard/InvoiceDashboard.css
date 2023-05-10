@@ -12,6 +12,11 @@
   color: #222944;
 }
 
+.section-subheader {
+  font-size: 1rem;
+  text-align: left;
+  color: gray;
+}
 
 .table-container {
   

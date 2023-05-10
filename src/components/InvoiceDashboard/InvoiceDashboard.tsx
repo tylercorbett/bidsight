@@ -9,6 +9,8 @@ import EditInvoiceModal from '../EditInvoiceModal/EditInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
+import Typography from '@mui/material/Typography';
+
 
 const InvoiceDashboard: React.FC = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
@@ -58,7 +60,9 @@ const InvoiceDashboard: React.FC = () => {
           </Button>
         </span>
       </div>
-      <InvoiceFilters 
+      <Typography id="status-subtitle" variant="subtitle1" align='left' component="h4">
+        Statuses
+      </Typography>      <InvoiceFilters 
         checkedFilters={checkedFilters}
         setCheckedFilters={setCheckedFilters}
       />
