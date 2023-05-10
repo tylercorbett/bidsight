@@ -30,6 +30,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
   const isInvoiceLate = isLate(row.due_date, row.status);
   const statusLabel = isInvoiceLate ? 'Late' : row.status;
   const statusColor = getInvoiceColorStatus(row);
+  const totalCost = row.charges.reduce((total, charge) => total + parseInt(charge.cost), 0);
 
   return (
     <React.Fragment>
@@ -78,6 +79,11 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
                       </TableCell>
                     </TableRow>
                   ))}
+                  <TableRow key={'total-cost'}>
+                      <TableCell component="th" scope="row">
+                        <strong>{totalCost}</strong>
+                      </TableCell>
+                    </TableRow>
                 </TableBody>
               </Table>
             </Box>
