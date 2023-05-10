@@ -68,8 +68,8 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.charges.map((chargeRow) => (
-                    <TableRow key={chargeRow.label}>
+                  {row.charges.map((chargeRow, i) => (
+                    <TableRow key={i}>
                       <TableCell component="th" scope="row">
                         {chargeRow.cost}
                       </TableCell>
