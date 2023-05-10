@@ -57,8 +57,6 @@ const InvoiceDashboard: React.FC = () => {
   const [checkedFilters, setCheckedFilters] = useState<boolean[]>([true, true, true, true]);
   const [selectedInvoice, setSelectedInvoice] = useState<null | Invoice>(null);
 
-  console.log(selectedInvoice, 'selectedInvoice')
-
   const handleSubmit = (invoice: Invoice) => {
     const newInvoices: Invoice[] = [invoice, ...invoices];
     setInvoices(newInvoices);

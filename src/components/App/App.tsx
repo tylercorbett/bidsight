@@ -3,11 +3,11 @@ import InvoiceDashboard from '../InvoiceDashboard/InvoiceDashboard';
 import SideNav from '../SideNav/SideNav';
 import './App.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 const App: React.FC = () => {
   return (
-    <LocalizationProvider dateAdapter={AdapterLuxon}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="App">
         <SideNav />
         <section>

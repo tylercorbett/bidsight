@@ -14,6 +14,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ChargeList from '../ChargeList/ChargeList';
 import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
+import dayjs, { Dayjs } from 'dayjs';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -134,6 +135,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
         <DatePicker 
           label='Due date' 
           onChange={(newValue) => handleDateChange(newValue)} 
+          defaultValue={dayjs('2022-04-17')}
         />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
