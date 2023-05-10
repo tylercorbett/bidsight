@@ -140,6 +140,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
           handleAddChargeClicked={handleAddChargeClicked}
           handleDeleteChargeClicked={handleDeleteChargeClicked}
         />
+        <br />
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm changes</Button>
       </Box>
       </Modal>
