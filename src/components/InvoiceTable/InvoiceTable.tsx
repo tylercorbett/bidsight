@@ -17,6 +17,7 @@ import { InvoiceStatuses, Invoice } from '../../types/invoice';
 import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
+import { capitalizeString } from '../../utils/capitalize';
 
 interface RowProps {
   row: ReturnType<typeof createData>,
@@ -28,7 +29,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
 
   const hasCharges = row.charges.length > 0;
   const isInvoiceLate = isLate(row.due_date, row.status);
-  const statusLabel = isInvoiceLate ? 'Late' : row.status;
+  const statusLabel = isInvoiceLate ? 'Late' : capitalizeString(row.status);
   const statusColor = getInvoiceColorStatus(row);
 
   return (
