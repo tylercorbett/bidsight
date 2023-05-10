@@ -135,7 +135,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
         <DatePicker 
           label='Due date' 
           onChange={(newValue) => handleDateChange(newValue)} 
-          defaultValue={dayjs('2022-04-17')}
+          defaultValue={dayjs(invoice?.dueDate)}
         />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
