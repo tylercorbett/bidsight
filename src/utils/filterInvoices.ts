@@ -39,6 +39,6 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
     }
   });
 
-  console.log(result, 'result');
+  console.log(result, 'result in filter');
   return result;
 }

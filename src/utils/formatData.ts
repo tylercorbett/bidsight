@@ -14,9 +14,12 @@ export const formatData = (data: any[]): Invoice[] => {
   data.forEach((invoice: any) => {
     const formattedInvoice = {...invoice};
     const capitalizedStatus = capitalizeString(invoice.status);
-    const reformattedCharges = reformatCharges(invoice.charges);
     formattedInvoice.status = capitalizedStatus;
-    formattedInvoice.charges = reformattedCharges;
+
+    if (invoice.charges.length > 0) {
+      const reformattedCharges = reformatCharges(invoice.charges);
+      formattedInvoice.charges = reformattedCharges;
+    }
     result.push(formattedInvoice)
   });
 

@@ -94,6 +94,7 @@ interface InvoiceTableProps {
 }
 
 const InvoiceTable: React.FC<InvoiceTableProps> = ({ rows, handleEditClick }) => {
+  console.log(rows, 'rows in table')
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -109,7 +110,7 @@ const InvoiceTable: React.FC<InvoiceTableProps> = ({ rows, handleEditClick }) =>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} handleEditClick={handleEditClick} />
+            <Row key={row.id} row={row} handleEditClick={handleEditClick} />
           ))}
         </TableBody>
       </Table>
