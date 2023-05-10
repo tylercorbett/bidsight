@@ -16,6 +16,8 @@ import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
 import dayjs from 'dayjs';
 
+const today = dayjs().format('MM-DD-YYYY');
+
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -42,7 +44,7 @@ interface Props {
 const defaultState = {
   name: '',
   category: '',
-  dueDate: '',
+  dueDate: today,
   status: InvoiceStatuses.Outstanding
 };
 
