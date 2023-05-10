@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Invoice, Charge, InvoiceStatuses, InvoiceBody } from '../../types/invoice';
+import { Invoice, Charge, InvoiceBody } from '../../types/invoice';
 import { removeCharge } from '../../utils/removeCharge';
 import Charges from '../Charges/Charges';
 import InvoiceBaseInputFields from '../InvoiceBaseInputFields/InvoiceBaseInputFields';
