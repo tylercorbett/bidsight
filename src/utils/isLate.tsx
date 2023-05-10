@@ -1,5 +1,3 @@
-import { InvoiceStatuses } from "../types/invoice";
-
 export const isLate = (dateString: string, status: string): boolean => {
   const today = new Date();
   const dateParts = dateString.split(/[-/]/);
