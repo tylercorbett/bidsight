@@ -29,12 +29,6 @@ const Row:React.FC<RowProps> = ({ row }) => {
   const statusLabel = isInvoiceLate ? 'Late' : row.status;
   const statusColor = getInvoiceColorStatus(row);
 
-  const computedNameStyles = isInvoiceLate ? 
-  {
-    color: 'red'
-  }
-  : {};
-
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -47,7 +41,7 @@ const Row:React.FC<RowProps> = ({ row }) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>}
         </TableCell>
-        <TableCell component="th" scope="row" sx={computedNameStyles}>
+        <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
         <TableCell align="right"><Chip color={statusColor} label={statusLabel} /></TableCell>
