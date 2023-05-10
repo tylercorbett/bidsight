@@ -53,7 +53,9 @@ const InvoiceDashboard: React.FC = () => {
   return (
     <section className="InvoiceDashboard">
       <div className='title-add-button-container'>
-        <h3 className='section-title'>Invoices</h3>
+        <Typography id="status-subtitle" variant="h4" align='left' component="h3">
+          Invoices
+        </Typography>  
         <span className='add-button-container'>
           <Button variant='contained' onClick={() => setIsAddModalOpen(true)}>
             + Add new invoice

@@ -6,13 +6,6 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.section-title {
-  font-size: 1.8rem;
-  text-align: left;
-  color: #222944;
-}
-
-
 .title-add-button-container {
   display: flex;
   align-items: center;
