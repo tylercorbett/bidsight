@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Invoice } from '../../types/invoice';
 import { filterInvoicesByStatuses } from '../../utils/filterInvoices';
 import AddInvoiceModal from '../AddInvoiceModal/AddInvoiceModal';
+import EditInvoiceModal from '../EditInvoiceModal/EditInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
 import './InvoiceDashboard.css';
@@ -51,21 +52,24 @@ const rows = [
 
 
 const InvoiceDashboard: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [invoices, setInvoices] = useState<Invoice[]>(rows);
   const [checkedFilters, setCheckedFilters] = useState<boolean[]>([true, true, true, true]);
-  const [selectedInvoice, setSelectedInvoice] = useState<null | number>(null);
+  const [selectedInvoice, setSelectedInvoice] = useState<null | Invoice>(null);
+
+  console.log(selectedInvoice, 'selectedInvoice')
 
   const handleSubmit = (invoice: Invoice) => {
     const newInvoices: Invoice[] = [invoice, ...invoices];
     setInvoices(newInvoices);
-    setIsModalOpen(false);
+    setIsAddModalOpen(false);
+    setSelectedInvoice(null);
   };
 
   const filteredInvoices = filterInvoicesByStatuses(invoices, checkedFilters);
 
-  const handleInvoiceSelected = (id: number) => {
-    setSelectedInvoice(id);
+  const handleInvoiceSelected = (invoice: Invoice) => {
+    setSelectedInvoice(invoice);
   };
 
   return (
@@ -73,7 +77,7 @@ const InvoiceDashboard: React.FC = () => {
       <div className='title-add-button-container'>
         <h3 className='section-title'>Invoices</h3>
         <span className='add-button-container'>
-          <Button variant='contained' onClick={() => setIsModalOpen(true)}>
+          <Button variant='contained' onClick={() => setIsAddModalOpen(true)}>
             + Add new invoice
           </Button>
         </span>
@@ -89,8 +93,13 @@ const InvoiceDashboard: React.FC = () => {
         />
       </section>
       <AddInvoiceModal 
-        isModalOpen={isModalOpen}
-        handleClose={() => setIsModalOpen(false)}
+        isModalOpen={isAddModalOpen}
+        handleClose={() => setIsAddModalOpen(false)}
+        handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
+      />
+      <EditInvoiceModal 
+        isModalOpen={Boolean(selectedInvoice)}
+        handleClose={() => setSelectedInvoice(null)}
         handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
       />
     </section>

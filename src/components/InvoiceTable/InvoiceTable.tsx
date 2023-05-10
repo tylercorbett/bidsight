@@ -13,14 +13,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { createData } from '../InvoiceDashboard/InvoiceDashboard';
 import { isLate } from '../../utils/isLate';
-import { InvoiceStatuses } from '../../types/invoice';
+import { InvoiceStatuses, Invoice } from '../../types/invoice';
 import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface RowProps {
   row: ReturnType<typeof createData>,
-  handleEditClick: (id: number) => void,
+  handleEditClick: (invoice: Invoice) => void,
 }
 
 const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
@@ -51,7 +51,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
         <TableCell align="right">{row.dueDate}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">
-          <IconButton aria-label="delete" size='small' onClick={() => handleEditClick(row.id)}>
+          <IconButton aria-label="delete" size='small' onClick={() => handleEditClick(row)}>
             <EditIcon fontSize='small'/>
           </IconButton>
         </TableCell>
@@ -90,7 +90,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
 
 interface InvoiceTableProps {
   rows: any[],
-  handleEditClick: (id: number) => void,
+  handleEditClick: (invoice: Invoice) => void,
 }
 
 const InvoiceTable: React.FC<InvoiceTableProps> = ({ rows, handleEditClick }) => {
