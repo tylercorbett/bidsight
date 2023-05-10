@@ -87,7 +87,7 @@ const InvoiceDashboard: React.FC = () => {
       <section className='table-container'>
         <InvoiceTable 
           rows={filteredInvoices}
-          handleEditClicked={handleInvoiceSelected}
+          handleEditClick={handleInvoiceSelected}
         />
       </section>
       <AddInvoiceModal 
