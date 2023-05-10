@@ -8,6 +8,7 @@ export type Invoice = {
   category: string,
   dueDate:  string,
   status: string,
+  charges: Charge[]
 }
 
 export enum InvoiceStatuses {
