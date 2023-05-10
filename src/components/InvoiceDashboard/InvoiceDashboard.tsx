@@ -68,8 +68,6 @@ const InvoiceDashboard: React.FC = () => {
     setSelectedInvoice(id);
   };
 
-  console.log('selectedInvoice', selectedInvoice);
-
   return (
     <section className="InvoiceDashboard">
       <div className='title-add-button-container'>
