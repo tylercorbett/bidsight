@@ -1,6 +1,6 @@
 import { InvoiceStatuses } from "../types/invoice";
 
-export const isLate = (dateString: string, status: InvoiceStatuses): boolean => {
+export const isLate = (dateString: string, status: string): boolean => {
   const today = new Date();
   const dateParts = dateString.split(/[-/]/);
   
@@ -14,8 +14,9 @@ export const isLate = (dateString: string, status: InvoiceStatuses): boolean => 
   
   // Comparing the provided date with today's date
   const isDayBeforeToday = providedDate < today;
+  console.log(status, 'isDayBeforeToday');
 
-  if (isDayBeforeToday && (status === 'Outstanding')) {
+  if (isDayBeforeToday && (status === 'OUTSTANDING')) {
     return true;
   } 
   else {

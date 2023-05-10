@@ -29,13 +29,18 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
     // A late invoice is defined as status === 'Oustanding' && due_date has past present day
     // in this case we want to override the 'Outstanding' filter and force it into the array
     // so that the invoice is still visible
-    if (statuses.includes('Late') && isLate(invoice.due_date, invoice.status as InvoiceStatuses)) {
+    console.log('invoice in filter', invoice);
+    console.log(isLate(invoice.due_date, invoice.status.toUpperCase()))
+
+    if (statuses.includes('Late') && isLate(invoice.due_date, invoice.status.toUpperCase() as InvoiceStatuses)) {
       result.push(invoice);
     } else {
-      if (statuses.includes(invoice.status)) {
+      if (statuses.includes(invoice.status.toUpperCase())) {
         result.push(invoice);
       }
     }
   });
+
+  console.log(result, 'result');
   return result;
 }
