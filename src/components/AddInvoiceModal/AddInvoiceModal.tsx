@@ -3,36 +3,15 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import TextField from '@mui/material/TextField';
-import { Invoice, Charge, InvoiceStatuses } from '../../types/invoice';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Charge, InvoiceStatuses, InvoiceBody } from '../../types/invoice';
 import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
 import dayjs from 'dayjs';
 import Charges from '../Charges/Charges';
+import InvoiceBaseInputFields from '../InvoiceBaseInputFields/InvoiceBaseInputFields';
+import { modalBaseStyles } from '../shared/modalBaseStyles';
 
 const today = dayjs().format('MM-DD-YYYY');
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '.2rem',
-  boxShadow: 24,
-  p: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  minHeight: '46rem'
-};
 
 interface Props {
   isModalOpen: boolean,
@@ -52,25 +31,14 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   const [charges, setCharges] = useState<Charge[]>([]);
 
   const handleConfirmClicked = () => {
-    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.due_date === '');
+    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '');
     if (isInvalid) {
-      alert('Name, category, and due date are required');
+      alert('Name and category are required');
     } else {
-      handleSubmit({...newInvoice, charges, id: getRandomNumber()});
+      handleSubmit({...newInvoice, charges, id: getRandomNumber() });
       setNewInvoice(defaultState);
       setCharges([]);
     }
-  };
-
-  const handleInputChange = (inputValue: string, inputID: string) => {
-    let newInvoiceState = {...newInvoice};
-    newInvoiceState[inputID as keyof Invoice] = inputValue;
-    setNewInvoice(newInvoiceState);
-  };
-
-  const handleDateChange = (newDate: any) => {
-    const formattedDate = newDate.format('MM/DD/YYYY');
-    handleInputChange(formattedDate, 'due_date')
   };
 
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
@@ -91,51 +59,21 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box sx={modalBaseStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
           Add new invoice
         </Typography>
-        <TextField 
-          id="outlined-basic" 
-          label="Name" 
-          variant="outlined" 
-          required 
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleInputChange(event.target.value, 'name');
-          }}
+        <InvoiceBaseInputFields 
+          invoice={newInvoice}
+          handleChange={(invoiceBody: InvoiceBody) => setNewInvoice(invoiceBody)}
         />
-        <TextField 
-          id="outlined-basic" 
-          label="Category" 
-          variant="outlined" 
-          required 
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleInputChange(event.target.value, 'category');
-          }}
-        />
-        <DatePicker 
-          label='Due date' 
-          onChange={(newValue) => handleDateChange(newValue)} 
-          defaultValue={dayjs(new Date())}
-        />
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue={InvoiceStatuses.Outstanding}
-            name="radio-buttons-group"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
-          >
-            <FormControlLabel value={InvoiceStatuses.Outstanding} control={<Radio />} label={InvoiceStatuses.Outstanding} />
-            <FormControlLabel value={InvoiceStatuses.Paid} control={<Radio />} label={InvoiceStatuses.Paid} />
-            <FormControlLabel value={InvoiceStatuses.Draft} control={<Radio />} label={InvoiceStatuses.Draft} />
-          </RadioGroup>
-        </FormControl>
+        <br />
         <Charges 
           charges={charges}
           handleAddChargeClicked={handleAddChargeClicked}
           handleDeleteChargeClicked={handleDeleteChargeClicked}
         />
+        <br />
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
       </Box>
       </Modal>

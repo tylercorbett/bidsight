@@ -7,22 +7,7 @@ import { Invoice, Charge, InvoiceStatuses, InvoiceBody } from '../../types/invoi
 import { removeCharge } from '../../utils/removeCharge';
 import Charges from '../Charges/Charges';
 import InvoiceBaseInputFields from '../InvoiceBaseInputFields/InvoiceBaseInputFields';
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '.2rem',
-  boxShadow: 24,
-  p: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  minHeight: '46rem'
-};
+import { modalBaseStyles } from '../shared/modalBaseStyles';
 
 interface Props {
   isModalOpen: boolean,
@@ -71,7 +56,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box sx={modalBaseStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
           Edit existing invoice
         </Typography>
