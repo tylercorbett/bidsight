@@ -1,4 +1,5 @@
 import { Invoice, InvoiceStatuses } from "../types/invoice";
+import { isLate } from "./isLate";
 
 function getStatuses(booleanArray: boolean[]): string[] {
   const statuses: string[] = [];
@@ -20,10 +21,12 @@ function getStatuses(booleanArray: boolean[]): string[] {
 }
 
 
-export function filterObjectsByStatuses(objects: Invoice[], checkedInputs: boolean[]): any[] {
+export function filterObjectsByStatuses(objects: Invoice[], checkedInputs: boolean[]): Invoice[] {
   const statuses = getStatuses(checkedInputs);
-  if (statuses.includes('Late')) {
+  const result = [];
 
+  if (statuses.includes('Late')) {
+    // isLate
   }
   return objects.filter((obj) => statuses.includes(obj.status));
 }
