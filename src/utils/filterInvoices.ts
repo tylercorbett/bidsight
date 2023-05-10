@@ -23,12 +23,20 @@ function getStatuses(booleanArray: boolean[]): string[] {
 
 export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boolean[]): Invoice[] {
   const statuses = getStatuses(checkedInputs);
-  const result = [];
+  const result: Invoice[] = [];
 
-  if (statuses.includes('Late')) {
-    // isLate
-  }
-
-  // invoices.filter(())
-  return invoices.filter((obj) => statuses.includes(obj.status));
+  invoices.forEach((invoice: Invoice) => {
+    // A late invoice is defined as status === 'Oustanding' && dueDate has past present day
+    // in this case we want to override the 'Outstanding' filter and force it into the array
+    // so that the invoice is still visible
+    if (statuses.includes('Late') && isLate(invoice.dueDate, invoice.status as InvoiceStatuses)) {
+      console.log('this invoice is late ', invoice);
+      result.push(invoice);
+    } else {
+      if (statuses.includes(invoice.status)) {
+        result.push(invoice);
+      }
+    }
+  });
+  return result;
 }
