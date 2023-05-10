@@ -47,7 +47,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
-      handleSubmit({...newInvoice, charges });
+      handleSubmit({...newInvoice, charges, id: invoice.id });
       setNewInvoice(defaultState);
       setCharges([]);
     }
