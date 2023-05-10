@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Charge, InvoiceStatuses, InvoiceBody } from '../../types/invoice';
-import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
 import dayjs from 'dayjs';
 import Charges from '../Charges/Charges';
@@ -41,17 +40,6 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     }
   };
 
-  const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
-    const chargesCopy = [...charges];
-    const newChargesState = removeCharge(chargeToDelete, chargesCopy);
-    setCharges(newChargesState);
-  };  
-  
-  const handleAddChargeClicked = (chargeToAdd: Charge) => {
-    const newChargesState = [chargeToAdd, ...charges];
-    setCharges(newChargesState);
-  };
-
   return (
     <Modal
       open={isModalOpen}
@@ -70,8 +58,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
         <br />
         <Charges 
           charges={charges}
-          handleAddChargeClicked={handleAddChargeClicked}
-          handleDeleteChargeClicked={handleDeleteChargeClicked}
+          setCharges={setCharges}
         />
         <br />
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>

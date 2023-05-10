@@ -5,14 +5,14 @@ import ChargeList from '../ChargeList/ChargeList';
 import TextField from '@mui/material/TextField';
 import { Charge } from '../../types/invoice';
 import Button from '@mui/material/Button';
+import { removeCharge } from '../../utils/removeCharge';
 
 interface Props {
   charges: Charge[],
-  handleAddChargeClicked: (charge: Charge) => void,
-  handleDeleteChargeClicked: (charge: Charge) => void,
+  setCharges: (charges: Charge[]) => void,
 }
 
-const Charges: React.FC<Props> = ({ charges, handleAddChargeClicked, handleDeleteChargeClicked }) => {
+const Charges: React.FC<Props> = ({ charges, setCharges }) => {
   const [cost, setCost] = useState<string>('');
   const [label, setLabel] = useState<string>('');
 
@@ -23,8 +23,15 @@ const Charges: React.FC<Props> = ({ charges, handleAddChargeClicked, handleDelet
 
   const onSubmit = () => {
     if (cost === '' || label === '') return;
-    handleAddChargeClicked({ cost, label });
+    const newChargesState = [...charges, { cost, label }];
+    setCharges(newChargesState);
     resetChargeFields();
+  };
+
+  const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
+    const chargesCopy = [...charges];
+    const newChargesState = removeCharge(chargeToDelete, chargesCopy);
+    setCharges(newChargesState);
   };
 
   return (
