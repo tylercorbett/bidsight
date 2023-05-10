@@ -97,12 +97,12 @@ const InvoiceDashboard: React.FC = () => {
         handleClose={() => setIsAddModalOpen(false)}
         handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
       />
-      <EditInvoiceModal 
+      {selectedInvoice && <EditInvoiceModal 
         isModalOpen={Boolean(selectedInvoice)}
         handleClose={() => setSelectedInvoice(null)}
         handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
         invoice={selectedInvoice}
-      />
+      />}
     </section>
   );
 }
