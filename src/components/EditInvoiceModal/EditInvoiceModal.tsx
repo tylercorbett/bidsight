@@ -53,13 +53,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
     }
   };
 
-  const handleInputChange = (inputValue: string, inputID: string) => {
-    let newInvoiceState = {...newInvoice};
-    newInvoiceState[inputID as keyof Invoice] = inputValue;
-    setNewInvoice(newInvoiceState);
-  };
-
-
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
     const chargesCopy = [...charges];
     const newChargesState = removeCharge(chargeToDelete, chargesCopy);

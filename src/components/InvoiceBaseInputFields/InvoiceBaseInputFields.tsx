@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Invoice, InvoiceStatuses } from '../../types/invoice';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -25,6 +25,10 @@ const InvoiceBaseInputFields: React.FC<Props> = ({ invoice }) => {
     const formattedDate = newDate.format('MM/DD/YYYY');
     setDueDate(formattedDate);
   };
+
+  useEffect(() => {
+    console.log('something changed')
+  }, [name, category, due_date, status])
 
   return (
     <>
