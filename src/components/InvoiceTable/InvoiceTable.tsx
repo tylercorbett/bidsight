@@ -16,6 +16,7 @@ import { isLate } from '../../utils/isLate';
 import { InvoiceStatuses } from '../../types/invoice';
 import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface RowProps {
   row: ReturnType<typeof createData>
@@ -48,6 +49,11 @@ const Row:React.FC<RowProps> = ({ row }) => {
         <TableCell align="right">{row.category}</TableCell>
         <TableCell align="right">{row.dueDate}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
+        <TableCell align="right">
+          <IconButton aria-label="delete" size='small'>
+            <EditIcon fontSize='small'/>
+          </IconButton>
+        </TableCell>
       </TableRow>
       {hasCharges && <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
