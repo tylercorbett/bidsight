@@ -1,10 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-
-interface Charge {
-  label: string;
-  cost: string;
-}
+import { Charge } from '../../types/invoice';
 
 const charges: Charge[] = [
   {
@@ -21,20 +17,17 @@ const charges: Charge[] = [
   }
 ];
 
-// 5 colors for sections
-const colors = [
-  '#002A5E',
-  '#094D96',
-  '#1C72CE',
-  '#389BF2',
-  '#58BDFC',
-];
+// 5 colors currently supported - add more if needed
+const colors = ['#002A5E', '#094D96', '#1C72CE', '#389BF2', '#58BDFC'];
 
-const InvoicePieChart: React.FC = () => {
-  const data = charges.map((charge, index) => ({
-    ...charge,
+interface Props {
+  // No longer accepting charges as a prop
+}
+
+const InvoicePieChart: React.FC<Props> = () => {
+  const data = charges.map((charge) => ({
+    name: charge.label,
     value: parseFloat(charge.cost),
-    color: colors[index % colors.length]
   }));
 
   return (
@@ -51,22 +44,25 @@ const InvoicePieChart: React.FC = () => {
           const x = cx + radius * Math.cos(-midAngle * RADIAN);
           const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
+          const label = data[index].name;
+          const truncatedLabel = label.length > 20 ? label.substring(0, 20) + '...' : label;
+
           return (
             <text
               x={x}
               y={y}
-              fill={data[index].color}
+              fill={colors[index % colors.length]}
               textAnchor={x > cx ? 'start' : 'end'}
               dominantBaseline="central"
             >
-              {data[index].label}
+              {truncatedLabel}
             </text>
           );
         }}
         dataKey="value"
       >
         {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={entry.color} />
+          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Pie>
       <Tooltip />
