@@ -56,8 +56,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
   const [charges, setCharges] = useState<Charge[]>([]);
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
-  console.log('invoice in edit invoice modal', invoice);
-
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
     if (isInvalid) {
@@ -137,7 +135,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue={InvoiceStatuses.Outstanding}
+            defaultValue={invoice?.status}
             name="radio-buttons-group"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
           >
