@@ -53,7 +53,8 @@ const rows = [
 const InvoiceDashboard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [invoices, setInvoices] = useState<Invoice[]>(rows);
-  const [checkedFilters, setCheckedFilters] = useState([true, true, true, true]);
+  const [checkedFilters, setCheckedFilters] = useState<boolean[]>([true, true, true, true]);
+  const [selectedInvoice, setSelectedInvoice] = useState<null | number>(null);
 
   const handleSubmit = (invoice: Invoice) => {
     const newInvoices: Invoice[] = [invoice, ...invoices];
@@ -62,6 +63,12 @@ const InvoiceDashboard: React.FC = () => {
   };
 
   const filteredInvoices = filterInvoicesByStatuses(invoices, checkedFilters);
+
+  const handleInvoiceSelected = (id: number) => {
+    setSelectedInvoice(id);
+  };
+
+  console.log('selectedInvoice', selectedInvoice);
 
   return (
     <section className="InvoiceDashboard">
@@ -80,6 +87,7 @@ const InvoiceDashboard: React.FC = () => {
       <section className='table-container'>
         <InvoiceTable 
           rows={filteredInvoices}
+          handleEditClicked={handleInvoiceSelected}
         />
       </section>
       <AddInvoiceModal 

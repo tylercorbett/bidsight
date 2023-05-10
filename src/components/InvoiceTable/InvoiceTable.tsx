@@ -19,10 +19,11 @@ import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface RowProps {
-  row: ReturnType<typeof createData>
+  row: ReturnType<typeof createData>,
+  handleEditClick: (id: number) => void,
 }
 
-const Row:React.FC<RowProps> = ({ row }) => {
+const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
   const [open, setOpen] = useState(false);
 
   const hasCharges = row.charges.length > 0;
@@ -50,7 +51,7 @@ const Row:React.FC<RowProps> = ({ row }) => {
         <TableCell align="right">{row.dueDate}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">
-          <IconButton aria-label="delete" size='small'>
+          <IconButton aria-label="delete" size='small' onClick={() => handleEditClick(row.id)}>
             <EditIcon fontSize='small'/>
           </IconButton>
         </TableCell>
