@@ -85,7 +85,10 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
                     </TableRow>
                 </TableBody>
               </Table>
-              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>hello</div>
+              <div 
+                style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+              >
+                hello</div>
             </Box>
           </Collapse>
         </TableCell>

@@ -66,12 +66,10 @@ const InvoiceDashboard: React.FC = () => {
         checkedFilters={checkedFilters}
         setCheckedFilters={setCheckedFilters}
       />
-      <section className='table-container'>
-        <InvoiceTable 
-          rows={filteredInvoices}
-          handleEditClick={handleInvoiceSelected}
-        />
-      </section>
+      <InvoiceTable 
+        rows={filteredInvoices}
+        handleEditClick={handleInvoiceSelected}
+      />
       <AddInvoiceModal 
         isModalOpen={isAddModalOpen}
         handleClose={() => setIsAddModalOpen(false)}
