@@ -62,7 +62,8 @@ const InvoiceDashboard: React.FC = () => {
       </div>
       <Typography id="status-subtitle" variant="subtitle1" align='left' component="h4">
         Statuses
-      </Typography>      <InvoiceFilters 
+      </Typography>      
+      <InvoiceFilters 
         checkedFilters={checkedFilters}
         setCheckedFilters={setCheckedFilters}
       />
