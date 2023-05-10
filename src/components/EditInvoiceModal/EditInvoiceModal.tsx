@@ -3,17 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import TextField from '@mui/material/TextField';
 import { Invoice, Charge, InvoiceStatuses } from '../../types/invoice';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { removeCharge } from '../../utils/removeCharge';
-import dayjs from 'dayjs';
 import Charges from '../Charges/Charges';
+import InvoiceBaseInputFields from '../InvoiceBaseInputFields/InvoiceBaseInputFields';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -66,10 +59,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
     setNewInvoice(newInvoiceState);
   };
 
-  const handleDateChange = (newDate: any) => {
-    const formattedDate = newDate.format('MM/DD/YYYY');
-    handleInputChange(formattedDate, 'due_date')
-  };
 
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
     const chargesCopy = [...charges];
@@ -93,47 +82,9 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
         <Typography id="modal-modal-title" variant="h6" component="h2" marginBottom={".5rem"}>
           Edit existing invoice
         </Typography>
-        <TextField 
-          id="outlined-basic" 
-          label="Name" 
-          variant="outlined"
-          defaultValue={invoice?.name}
-          required 
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleInputChange(event.target.value, 'name');
-          }}
+        <InvoiceBaseInputFields 
+          invoice={invoice}
         />
-        <br />
-        <TextField 
-          id="outlined-basic" 
-          label="Category" 
-          variant="outlined" 
-          defaultValue={invoice?.category}
-          required 
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleInputChange(event.target.value, 'category');
-          }}
-        />
-        <br />
-        <DatePicker 
-          label='Due date' 
-          onChange={(newValue) => handleDateChange(newValue)} 
-          defaultValue={dayjs(invoice?.due_date)}
-        />
-        <br />
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue={invoice?.status}
-            name="radio-buttons-group"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
-          >
-            <FormControlLabel value={InvoiceStatuses.Outstanding} control={<Radio />} label={InvoiceStatuses.Outstanding} />
-            <FormControlLabel value={InvoiceStatuses.Paid} control={<Radio />} label={InvoiceStatuses.Paid} />
-            <FormControlLabel value={InvoiceStatuses.Draft} control={<Radio />} label={InvoiceStatuses.Draft} />
-          </RadioGroup>
-        </FormControl>
         <br />
         <Charges 
           charges={charges}
