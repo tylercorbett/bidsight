@@ -30,7 +30,6 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
     // in this case we want to override the 'Outstanding' filter and force it into the array
     // so that the invoice is still visible
     if (statuses.includes('Late') && isLate(invoice.dueDate, invoice.status as InvoiceStatuses)) {
-      console.log('this invoice is late ', invoice);
       result.push(invoice);
     } else {
       if (statuses.includes(invoice.status)) {
