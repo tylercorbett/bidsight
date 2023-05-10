@@ -6,7 +6,7 @@ export interface Charge {
 export type Invoice = {
   name: string,
   category: string,
-  dueDate:  string,
+  due_date:  string,
   status: string,
   charges: Charge[],
   id: number

@@ -44,7 +44,7 @@ interface Props {
 const defaultState = {
   name: '',
   category: '',
-  dueDate: today,
+  due_date: today,
   status: InvoiceStatuses.Outstanding
 };
 
@@ -59,7 +59,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
   const handleConfirmClicked = () => {
-    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
+    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.due_date === '');
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
@@ -78,7 +78,7 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
 
   const handleDateChange = (newDate: any) => {
     const formattedDate = newDate.format('MM/DD/YYYY');
-    handleInputChange(formattedDate, 'dueDate')
+    handleInputChange(formattedDate, 'due_date')
   };
 
   const handleCurrentChargeChange = (inputValue: string, inputID: string) => {

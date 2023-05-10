@@ -26,10 +26,10 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
   const result: Invoice[] = [];
 
   invoices.forEach((invoice: Invoice) => {
-    // A late invoice is defined as status === 'Oustanding' && dueDate has past present day
+    // A late invoice is defined as status === 'Oustanding' && due_date has past present day
     // in this case we want to override the 'Outstanding' filter and force it into the array
     // so that the invoice is still visible
-    if (statuses.includes('Late') && isLate(invoice.dueDate, invoice.status as InvoiceStatuses)) {
+    if (statuses.includes('Late') && isLate(invoice.due_date, invoice.status as InvoiceStatuses)) {
       result.push(invoice);
     } else {
       if (statuses.includes(invoice.status)) {

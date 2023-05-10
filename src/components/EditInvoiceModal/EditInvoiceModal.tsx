@@ -42,7 +42,7 @@ interface Props {
 const defaultState = {
   name: '',
   category: '',
-  dueDate: '',
+  due_date: '',
   status: InvoiceStatuses.Outstanding
 };
 
@@ -57,7 +57,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
   const handleConfirmClicked = () => {
-    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
+    const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.due_date === '');
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
@@ -76,7 +76,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
 
   const handleDateChange = (newDate: any) => {
     const formattedDate = newDate.format('MM/DD/YYYY');
-    handleInputChange(formattedDate, 'dueDate')
+    handleInputChange(formattedDate, 'due_date')
   };
 
   const handleCurrentChargeChange = (inputValue: string, inputID: string) => {
@@ -130,7 +130,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
         <DatePicker 
           label='Due date' 
           onChange={(newValue) => handleDateChange(newValue)} 
-          defaultValue={dayjs(invoice?.dueDate)}
+          defaultValue={dayjs(invoice?.due_date)}
         />
         <FormControl>
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>

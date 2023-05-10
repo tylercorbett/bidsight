@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchInvoices } from '../../services/fetchInvoices';
 import { Invoice } from '../../types/invoice';
 import { filterInvoicesByStatuses } from '../../utils/filterInvoices';
 import { replaceObjectInArray } from '../../utils/updateInvoice';
@@ -13,14 +14,14 @@ export function createData(
   name: string,
   status: string,
   category: string,
-  dueDate: string,
+  due_date: string,
   id: number,
 ) {
   return {
     name,
     status,
     category,
-    dueDate,
+    due_date,
     id,
     charges: [
       {
@@ -54,9 +55,21 @@ const rows = [
 
 const InvoiceDashboard: React.FC = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
-  const [invoices, setInvoices] = useState<Invoice[]>(rows);
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [checkedFilters, setCheckedFilters] = useState<boolean[]>([true, true, true, true]);
   const [selectedInvoice, setSelectedInvoice] = useState<null | Invoice>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchInvoices();
+        setInvoices(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleAdd = (invoice: Invoice) => {
     const newInvoices: Invoice[] = [invoice, ...invoices];
@@ -67,11 +80,12 @@ const InvoiceDashboard: React.FC = () => {
 
   const handleEdit = (invoice: Invoice) => {
     const newInvoices: Invoice[] = replaceObjectInArray(invoices, invoice);
-    console.log('newInvoices', newInvoices);
     setInvoices(newInvoices);
     setIsAddModalOpen(false);
     setSelectedInvoice(null);
   };
+
+  console.log('invoices', invoices);
 
   const filteredInvoices = filterInvoicesByStatuses(invoices, checkedFilters);
 

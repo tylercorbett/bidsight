@@ -27,7 +27,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
   const [open, setOpen] = useState(false);
 
   const hasCharges = row.charges.length > 0;
-  const isInvoiceLate = isLate(row.dueDate, row.status as InvoiceStatuses);
+  const isInvoiceLate = isLate(row.due_date, row.status as InvoiceStatuses);
   const statusLabel = isInvoiceLate ? 'Late' : row.status;
   const statusColor = getInvoiceColorStatus(row);
 
@@ -48,7 +48,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
         </TableCell>
         <TableCell align="right"><Chip color={statusColor} label={statusLabel} /></TableCell>
         <TableCell align="right">{row.category}</TableCell>
-        <TableCell align="right">{row.dueDate}</TableCell>
+        <TableCell align="right">{row.due_date}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">
           <IconButton aria-label="delete" size='small' onClick={() => handleEditClick(row)}>

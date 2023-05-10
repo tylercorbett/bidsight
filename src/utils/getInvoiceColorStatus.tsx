@@ -2,7 +2,7 @@ import { Invoice, InvoiceStatuses } from "../types/invoice";
 import { isLate } from "./isLate";
 
 export const getInvoiceColorStatus = (invoice: Invoice) => {
-  const isInvoiceLate = isLate(invoice.dueDate, invoice.status as InvoiceStatuses);
+  const isInvoiceLate = isLate(invoice.due_date, invoice.status as InvoiceStatuses);
   if (isInvoiceLate) return 'error';
 
   switch(invoice.status) {
