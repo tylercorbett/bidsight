@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Invoice } from '../../types/invoice';
 import { filterInvoicesByStatuses } from '../../utils/filterInvoices';
+import { replaceObjectInArray } from '../../utils/updateInvoice';
 import AddInvoiceModal from '../AddInvoiceModal/AddInvoiceModal';
 import EditInvoiceModal from '../EditInvoiceModal/EditInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
@@ -57,8 +58,16 @@ const InvoiceDashboard: React.FC = () => {
   const [checkedFilters, setCheckedFilters] = useState<boolean[]>([true, true, true, true]);
   const [selectedInvoice, setSelectedInvoice] = useState<null | Invoice>(null);
 
-  const handleSubmit = (invoice: Invoice) => {
+  const handleAdd = (invoice: Invoice) => {
     const newInvoices: Invoice[] = [invoice, ...invoices];
+    setInvoices(newInvoices);
+    setIsAddModalOpen(false);
+    setSelectedInvoice(null);
+  };
+
+  const handleEdit = (invoice: Invoice) => {
+    const newInvoices: Invoice[] = replaceObjectInArray(invoices, invoice);
+    console.log('newInvoices', newInvoices);
     setInvoices(newInvoices);
     setIsAddModalOpen(false);
     setSelectedInvoice(null);
@@ -93,12 +102,12 @@ const InvoiceDashboard: React.FC = () => {
       <AddInvoiceModal 
         isModalOpen={isAddModalOpen}
         handleClose={() => setIsAddModalOpen(false)}
-        handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
+        handleSubmit={(invoice: Invoice) => handleAdd(invoice)}
       />
       {selectedInvoice && <EditInvoiceModal 
         isModalOpen={Boolean(selectedInvoice)}
         handleClose={() => setSelectedInvoice(null)}
-        handleSubmit={(invoice: Invoice) => handleSubmit(invoice)}
+        handleSubmit={(invoice: Invoice) => handleEdit(invoice)}
         invoice={selectedInvoice}
       />}
     </section>

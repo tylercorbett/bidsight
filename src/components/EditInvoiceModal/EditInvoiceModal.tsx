@@ -13,7 +13,6 @@ import { Invoice, Charge, InvoiceStatuses } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ChargeList from '../ChargeList/ChargeList';
 import { removeCharge } from '../../utils/removeCharge';
-import { getRandomNumber } from '../../utils/getRandomNumber';
 import dayjs from 'dayjs';
 
 const style = {
@@ -62,7 +61,7 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
     if (isInvalid) {
       alert('Name, category, and due date are required');
     } else {
-      handleSubmit({...newInvoice, charges, id: getRandomNumber()});
+      handleSubmit({...newInvoice, charges });
       setNewInvoice(defaultState);
       setNewCharge(defaultChargeState);
       setCharges([]);
