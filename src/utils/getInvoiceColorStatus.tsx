@@ -1,18 +1,17 @@
 import { Invoice, InvoiceStatuses } from "../types/invoice";
-import { capitalizeString } from "./capitalizeString";
 import { isLate } from "./isLate";
 
 export const getInvoiceColorStatus = (invoice: Invoice) => {
-  const status = capitalizeString(invoice.status);
+  const status = invoice.status;
   const isInvoiceLate = isLate(invoice.due_date, status);
   if (isInvoiceLate) return 'error';
 
   switch(status) {
-    case 'Outstanding':
+    case InvoiceStatuses.Outstanding:
       return 'warning'
-    case 'Paid':
+    case InvoiceStatuses.Paid:
       return 'success'
-    case 'Draft': 
+    case InvoiceStatuses.Draft: 
       return 'primary'
     default:
       return 'primary'
