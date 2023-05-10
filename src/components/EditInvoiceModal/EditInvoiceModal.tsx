@@ -34,7 +34,8 @@ const style = {
 interface Props {
   isModalOpen: boolean,
   handleClose: () => void,
-  handleSubmit: (invoice: any) => void
+  handleSubmit: (invoice: any) => void,
+  invoice: Invoice | null
 };
 
 
@@ -50,10 +51,12 @@ const defaultChargeState = {
   cost: ''
 };
 
-const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
+const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit, invoice }) => {
   const [newInvoice, setNewInvoice] = useState<Invoice>(defaultState);
   const [charges, setCharges] = useState<Charge[]>([]);
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
+
+  console.log('invoice in edit invoice modal', invoice);
 
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
