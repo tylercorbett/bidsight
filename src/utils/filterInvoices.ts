@@ -31,7 +31,6 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
     // so that the invoice is still visible
 
     if (statuses.includes('Late') && isLate(invoice.due_date, invoice.status)) {
-      console.log('this should go in the late one', invoice);
       result.push(invoice);
     } else {
       if (statuses.includes(invoice.status) && !isLate(invoice.due_date, invoice.status)) {
@@ -40,6 +39,5 @@ export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boo
     }
   });
 
-  console.log(result, 'result in filter');
   return result;
 }

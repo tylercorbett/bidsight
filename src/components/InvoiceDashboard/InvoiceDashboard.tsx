@@ -85,10 +85,7 @@ const InvoiceDashboard: React.FC = () => {
     setSelectedInvoice(null);
   };
 
-  console.log('invoices', invoices);
-  
   const filteredInvoices = filterInvoicesByStatuses(invoices, checkedFilters);
-  console.log('filteredInvoices', filteredInvoices);
 
   const handleInvoiceSelected = (invoice: Invoice) => {
     setSelectedInvoice(invoice);

@@ -94,7 +94,6 @@ interface InvoiceTableProps {
 }
 
 const InvoiceTable: React.FC<InvoiceTableProps> = ({ rows, handleEditClick }) => {
-  console.log(rows, 'rows in table')
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
