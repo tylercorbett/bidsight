@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
-import { Invoice, Charge } from '../../types/invoice';
+import { Invoice, Charge, InvoiceStatuses } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ChargeList from '../ChargeList/ChargeList';
 import { removeCharge } from '../../utils/removeCharge';
@@ -42,7 +42,7 @@ const defaultState = {
   name: '',
   category: '',
   dueDate: '',
-  status: 'Outstanding'
+  status: InvoiceStatuses.Outstanding
 };
 
 const defaultChargeState = {
@@ -134,13 +134,13 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
           <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="Outstanding"
+            defaultValue={InvoiceStatuses.Outstanding}
             name="radio-buttons-group"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleInputChange(event.target.value, 'status')}
           >
-            <FormControlLabel value="Outstanding" control={<Radio />} label="Outstanding" />
-            <FormControlLabel value="Paid" control={<Radio />} label="Paid" />
-            <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
+            <FormControlLabel value={InvoiceStatuses.Outstanding} control={<Radio />} label={InvoiceStatuses.Outstanding} />
+            <FormControlLabel value={InvoiceStatuses.Paid} control={<Radio />} label={InvoiceStatuses.Paid} />
+            <FormControlLabel value={InvoiceStatuses.Draft} control={<Radio />} label={InvoiceStatuses.Draft} />
           </RadioGroup>
         </FormControl>
         <Box>

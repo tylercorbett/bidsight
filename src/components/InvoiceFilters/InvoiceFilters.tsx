@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import './InvoiceFilters.css';
+import { InvoiceStatuses } from '../../types/invoice';
 
 interface Props {
   checkedFilters: boolean[],
@@ -33,11 +34,11 @@ const InvoiceFilters: React.FC<Props> = ({ setCheckedFilters, checkedFilters }) 
   const children = (
     <Box sx={{ display: 'flex', ml: 3 }}>
       <FormControlLabel
-        label="Paid"
+        label={InvoiceStatuses.Paid}
         control={<Checkbox checked={checkedFilters[0]} onChange={handleChange2} />}
       />
       <FormControlLabel
-        label="Outstanding"
+        label={InvoiceStatuses.Outstanding}
         control={<Checkbox checked={checkedFilters[1]} onChange={handleChange3} />}
       />
       <FormControlLabel
@@ -45,7 +46,7 @@ const InvoiceFilters: React.FC<Props> = ({ setCheckedFilters, checkedFilters }) 
         control={<Checkbox checked={checkedFilters[2]} onChange={handleChange4} />}
       />
       <FormControlLabel
-        label="Draft"
+        label={InvoiceStatuses.Draft}
         control={<Checkbox checked={checkedFilters[3]} onChange={handleChange5} />}
       />
     </Box>
