@@ -1,4 +1,6 @@
-export const isLate = (dateString: string, status: string): boolean => {
+import { InvoiceStatuses } from "../types/invoice";
+
+export const isLate = (dateString: string, status: InvoiceStatuses): boolean => {
   const today = new Date();
   const dateParts = dateString.split(/[-/]/);
   

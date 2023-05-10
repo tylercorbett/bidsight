@@ -9,3 +9,9 @@ export type Invoice = {
   dueDate:  string,
   status: string,
 }
+
+export enum InvoiceStatuses {
+  Paid = 'Paid',
+  Outstanding = 'Outstanding',
+  Draft = 'Draft'
+}
