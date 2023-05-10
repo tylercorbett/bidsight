@@ -16,13 +16,6 @@ interface Props {
   invoice: Invoice
 };
 
-const defaultState = {
-  name: '',
-  category: '',
-  due_date: '',
-  status: InvoiceStatuses.Outstanding
-};
-
 const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit, invoice }) => {
   const [newInvoice, setNewInvoice] = useState<any>(invoice);
   const [charges, setCharges] = useState<Charge[]>(invoice.charges ?? []);
@@ -33,7 +26,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
       alert('Name and category are required');
     } else {
       handleSubmit({...newInvoice, charges, id: invoice.id });
-      setNewInvoice(defaultState);
       setCharges([]);
     }
   };
