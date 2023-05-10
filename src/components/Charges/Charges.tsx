@@ -51,15 +51,6 @@ const Charges: React.FC<Props> = ({ charges, setCharges }) => {
       }
       <TextField 
         id="outlined-basic" 
-        label="Label" 
-        variant="outlined" 
-        required
-        value={label} 
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setLabel(event.target.value);
-        }}/>
-      <TextField 
-        id="outlined-basic" 
         label="Cost" 
         variant="outlined" 
         required 
@@ -68,6 +59,15 @@ const Charges: React.FC<Props> = ({ charges, setCharges }) => {
           setCost(event.target.value);
         }}
       />
+      <TextField 
+        id="outlined-basic" 
+        label="Label" 
+        variant="outlined" 
+        required
+        value={label} 
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          setLabel(event.target.value);
+      }}/>
       <Button onClick={onSubmit}>Add Charge</Button>
     </Box>
   );
