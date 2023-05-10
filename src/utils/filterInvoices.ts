@@ -1,3 +1,5 @@
+import { Invoice } from "../types/invoice";
+
 function getStatuses(booleanArray: boolean[]): string[] {
   const statuses: string[] = [];
 
@@ -18,7 +20,7 @@ function getStatuses(booleanArray: boolean[]): string[] {
 }
 
 
-export function filterObjectsByStatuses(objects: any[], checkedInputs: boolean[]): any[] {
+export function filterObjectsByStatuses(objects: Invoice[], checkedInputs: boolean[]): any[] {
   const statuses = getStatuses(checkedInputs);
   return objects.filter((obj) => statuses.includes(obj.status));
 }
