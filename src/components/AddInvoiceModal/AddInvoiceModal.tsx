@@ -11,10 +11,10 @@ import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import { Invoice, Charge, InvoiceStatuses } from '../../types/invoice';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import ChargeList from '../ChargeList/ChargeList';
 import { removeCharge } from '../../utils/removeCharge';
 import { getRandomNumber } from '../../utils/getRandomNumber';
 import dayjs from 'dayjs';
+import Charges from '../Charges/Charges';
 
 const today = dayjs().format('MM-DD-YYYY');
 
@@ -50,13 +50,6 @@ const defaultState = {
 const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit }) => {
   const [newInvoice, setNewInvoice] = useState<any>(defaultState);
   const [charges, setCharges] = useState<Charge[]>([]);
-  const [cost, setCost] = useState<string>('');
-  const [label, setLabel] = useState<string>('');
-
-  const resetChargeFields = () => {
-    setCost('');
-    setLabel('');
-  };
 
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.due_date === '');
@@ -65,7 +58,6 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     } else {
       handleSubmit({...newInvoice, charges, id: getRandomNumber()});
       setNewInvoice(defaultState);
-      resetChargeFields();
       setCharges([]);
     }
   };
@@ -81,17 +73,16 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
     handleInputChange(formattedDate, 'due_date')
   };
 
-  const handleAddChargeClicked = () => {
-    if (cost === '' || label === '') return;
-    setCharges([...charges, { cost, label }]);
-    resetChargeFields();
-  };
-
   const handleDeleteChargeClicked = (chargeToDelete: Charge) => {
     const chargesCopy = [...charges];
     const newChargesState = removeCharge(chargeToDelete, chargesCopy);
     setCharges(newChargesState);
   };  
+  
+  const handleAddChargeClicked = (chargeToAdd: Charge) => {
+    const newChargesState = [chargeToAdd, ...charges];
+    setCharges(newChargesState);
+  };
 
   return (
     <Modal
@@ -140,41 +131,11 @@ const AddInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubm
             <FormControlLabel value={InvoiceStatuses.Draft} control={<Radio />} label={InvoiceStatuses.Draft} />
           </RadioGroup>
         </FormControl>
-        <Box>
-          <Typography id="charges-title" variant="h6" component="h2" marginBottom=".2rem">
-            Charges
-          </Typography>
-          {charges.length > 0 
-          ? <ChargeList 
-              charges={charges}
-              handleDeleteChargeClicked={handleDeleteChargeClicked}
-            /> 
-          : 
-            <Typography id="charges-title" variant="body1" marginBottom=".6rem" color='gray'>
-              There are currently no charges for this invoice
-            </Typography>
-          }
-          <TextField 
-            id="outlined-basic" 
-            label="Label" 
-            variant="outlined" 
-            required
-            value={label} 
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setLabel(event.target.value);
-            }}/>
-          <TextField 
-            id="outlined-basic" 
-            label="Cost" 
-            variant="outlined" 
-            required 
-            value={cost}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setCost(event.target.value);
-            }}
-          />
-          <Button onClick={handleAddChargeClicked}>Add Charge</Button>
-        </Box>
+        <Charges 
+          charges={charges}
+          handleAddChargeClicked={handleAddChargeClicked}
+          handleDeleteChargeClicked={handleDeleteChargeClicked}
+        />
         <Button variant='contained' type='submit' onClick={handleConfirmClicked}>Confirm</Button>
       </Box>
       </Modal>
