@@ -55,10 +55,6 @@ const Charges: React.FC<Props> = ({ charges, setCharges }) => {
         variant="outlined" 
         required 
         value={cost}
-        inputProps={{
-          inputMode: 'numeric',
-          pattern: '[0-9]*',
-        }}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           const { value } = event.target;
           // Remove any non-digit characters using regular expression

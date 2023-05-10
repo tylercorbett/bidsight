@@ -59,7 +59,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
       {hasCharges && <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
+            <Box sx={{ margin: 1 }} style={{display: 'flex'}}>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
@@ -85,6 +85,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
                     </TableRow>
                 </TableBody>
               </Table>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>hello</div>
             </Box>
           </Collapse>
         </TableCell>
