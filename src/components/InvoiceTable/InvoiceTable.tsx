@@ -11,15 +11,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { createData } from '../InvoiceDashboard/InvoiceDashboard';
 import { isLate } from '../../utils/isLate';
-import { InvoiceStatuses, Invoice } from '../../types/invoice';
+import { Invoice } from '../../types/invoice';
 import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface RowProps {
-  row: ReturnType<typeof createData>,
+  row: Invoice,
   handleEditClick: (invoice: Invoice) => void,
 }
 

@@ -34,7 +34,7 @@ const InvoiceBaseInputFields: React.FC<Props> = ({ invoice, handleChange }) => {
       due_date,
       status
     })
-  }, [name, category, due_date, status]);
+  }, [name, category, due_date, status, handleChange]);
 
   return (
     <>
