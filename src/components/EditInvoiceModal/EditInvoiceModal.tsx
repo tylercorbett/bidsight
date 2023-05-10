@@ -38,17 +38,11 @@ interface Props {
   invoice: Invoice | null
 };
 
-
 const defaultState = {
   name: '',
   category: '',
   due_date: '',
   status: InvoiceStatuses.Outstanding
-};
-
-const defaultChargeState = {
-  label: '',
-  cost: ''
 };
 
 const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSubmit, invoice }) => {
