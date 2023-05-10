@@ -57,8 +57,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
   const [charges, setCharges] = useState<Charge[]>(invoice?.charges ?? []);
   const [newCharge, setNewCharge] = useState<Charge>(defaultChargeState);
 
-  console.log('newInvoice', newInvoice);
-
   const handleConfirmClicked = () => {
     const isInvalid = (newInvoice.name === '') || (newInvoice.category === '') || (newInvoice.dueDate === '');
     if (isInvalid) {
@@ -83,8 +81,6 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
   };
 
   const handleCurrentChargeChange = (inputValue: string, inputID: string) => {
-    console.log(inputValue, 'inputValue');
-    console.log(inputID, 'inputID');
     let newChargeState = {...newCharge};
     newChargeState[inputID as keyof Charge] = inputValue;
     setNewCharge(newChargeState);
