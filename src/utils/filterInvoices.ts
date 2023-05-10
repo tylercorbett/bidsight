@@ -21,12 +21,14 @@ function getStatuses(booleanArray: boolean[]): string[] {
 }
 
 
-export function filterObjectsByStatuses(objects: Invoice[], checkedInputs: boolean[]): Invoice[] {
+export function filterInvoicesByStatuses(invoices: Invoice[], checkedInputs: boolean[]): Invoice[] {
   const statuses = getStatuses(checkedInputs);
   const result = [];
 
   if (statuses.includes('Late')) {
     // isLate
   }
-  return objects.filter((obj) => statuses.includes(obj.status));
+
+  // invoices.filter(())
+  return invoices.filter((obj) => statuses.includes(obj.status));
 }

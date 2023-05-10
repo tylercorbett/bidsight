@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Invoice } from '../../types/invoice';
-import { filterObjectsByStatuses } from '../../utils/filterInvoices';
+import { filterInvoicesByStatuses } from '../../utils/filterInvoices';
 import AddInvoiceModal from '../AddInvoiceModal/AddInvoiceModal';
 import InvoiceFilters from '../InvoiceFilters/InvoiceFilters';
 import InvoiceTable from '../InvoiceTable/InvoiceTable';
@@ -61,7 +61,7 @@ const InvoiceDashboard: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const filteredInvoices = filterObjectsByStatuses(invoices, checkedFilters);
+  const filteredInvoices = filterInvoicesByStatuses(invoices, checkedFilters);
 
   return (
     <section className="InvoiceDashboard">
