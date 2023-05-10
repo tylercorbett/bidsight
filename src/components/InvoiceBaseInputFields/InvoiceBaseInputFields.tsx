@@ -28,7 +28,6 @@ const InvoiceBaseInputFields: React.FC<Props> = ({ invoice, handleChange }) => {
   };
 
   useEffect(() => {
-    console.log('something changed')
     handleChange({ 
       name,
       category,
