@@ -112,7 +112,8 @@ const EditInvoiceModal: React.FC<Props> = ({ isModalOpen, handleClose, handleSub
         <TextField 
           id="outlined-basic" 
           label="Name" 
-          variant="outlined" 
+          variant="outlined"
+          defaultValue={invoice?.name}
           required 
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             handleInputChange(event.target.value, 'name');
