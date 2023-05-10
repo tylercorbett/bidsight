@@ -12,6 +12,10 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { createData } from '../InvoiceDashboard/InvoiceDashboard';
+import { isLate } from '../../utils/isLate';
+import { InvoiceStatuses } from '../../types/invoice';
+import Chip from '@mui/material/Chip';
+import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 
 interface RowProps {
   row: ReturnType<typeof createData>
@@ -21,6 +25,15 @@ const Row:React.FC<RowProps> = ({ row }) => {
   const [open, setOpen] = useState(false);
 
   const hasCharges = row.charges.length > 0;
+  const isInvoiceLate = isLate(row.dueDate, row.status as InvoiceStatuses);
+  const statusLabel = isInvoiceLate ? 'Late' : row.status;
+  const statusColor = getInvoiceColorStatus(row);
+
+  const computedNameStyles = isInvoiceLate ? 
+  {
+    color: 'red'
+  }
+  : {};
 
   return (
     <React.Fragment>
@@ -34,10 +47,10 @@ const Row:React.FC<RowProps> = ({ row }) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>}
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" sx={computedNameStyles}>
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.status}</TableCell>
+        <TableCell align="right"><Chip color={statusColor} label={statusLabel} /></TableCell>
         <TableCell align="right">{row.category}</TableCell>
         <TableCell align="right">{row.dueDate}</TableCell>
         <TableCell align="right">{row.id}</TableCell>
