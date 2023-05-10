@@ -55,8 +55,15 @@ const Charges: React.FC<Props> = ({ charges, setCharges }) => {
         variant="outlined" 
         required 
         value={cost}
+        inputProps={{
+          inputMode: 'numeric',
+          pattern: '[0-9]*',
+        }}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setCost(event.target.value);
+          const { value } = event.target;
+          // Remove any non-digit characters using regular expression
+          const sanitizedValue = value.replace(/\D/g, '');
+          setCost(sanitizedValue);
         }}
       />
       <TextField 
