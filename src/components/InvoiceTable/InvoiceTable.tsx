@@ -17,7 +17,7 @@ import { InvoiceStatuses, Invoice } from '../../types/invoice';
 import Chip from '@mui/material/Chip';
 import { getInvoiceColorStatus } from '../../utils/getInvoiceColorStatus';
 import EditIcon from '@mui/icons-material/Edit';
-import { capitalizeString } from '../../utils/capitalize';
+import { capitalizeString } from '../../utils/capitalizeString';
 
 interface RowProps {
   row: ReturnType<typeof createData>,
