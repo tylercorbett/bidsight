@@ -45,7 +45,7 @@ const InvoicePieChart: React.FC<Props> = () => {
           const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
           const label = data[index].name;
-          const truncatedLabel = label.length > 20 ? label.substring(0, 20) + '...' : label;
+          const truncatedLabel = label.length > 9 ? label.substring(0, 9) + '...' : label;
 
           return (
             <text
@@ -60,6 +60,7 @@ const InvoicePieChart: React.FC<Props> = () => {
           );
         }}
         dataKey="value"
+        animationDuration={850} // Set animation duration to 200ms
       >
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
