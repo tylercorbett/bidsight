@@ -89,7 +89,7 @@ const Row:React.FC<RowProps> = ({ row, handleEditClick }) => {
               </Table>
               <div className='chart-container'>
                 <InvoicePieChart 
-                  // charges={row.charges}
+                  charges={row.charges}
                 />
               </div>
             </Box>

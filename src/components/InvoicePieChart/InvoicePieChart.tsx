@@ -2,29 +2,14 @@ import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { Charge } from '../../types/invoice';
 
-const charges: Charge[] = [
-  {
-    label: "20 glass panels 5x4 feet",
-    cost: "6350.00"
-  },
-  {
-    label: "Aluminium composite",
-    cost: "440.00"
-  },
-  {
-    label: "Panel installation labor",
-    cost: "910.00"
-  }
-];
-
 // 5 colors currently supported - add more if needed
 const colors = ['#002A5E', '#094D96', '#1C72CE', '#389BF2', '#58BDFC'];
 
 interface Props {
-  // No longer accepting charges as a prop
+  charges: Charge[]
 }
 
-const InvoicePieChart: React.FC<Props> = () => {
+const InvoicePieChart: React.FC<Props> = ({ charges }) => {
   const data = charges.map((charge) => ({
     name: charge.label,
     value: parseFloat(charge.cost),
