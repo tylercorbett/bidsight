@@ -2,8 +2,28 @@ import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { Charge } from '../../types/invoice';
 
-// 5 colors currently supported - add more if needed
-const colors = ['#002A5E', '#094D96', '#1C72CE', '#389BF2', '#58BDFC'];
+const colors = [
+  '#002A5E',
+  '#094D96',
+  '#1C72CE',
+  '#389BF2',
+  '#58BDFC',
+  '#00471B',
+  '#006C2D',
+  '#009743',
+  '#00C258',
+  '#00E869',
+  '#E5E5E5',
+  '#CCCCCC',
+  '#B3B3B3',
+  '#999999',
+  '#808080',
+  '#666666',
+  '#4D4D4D',
+  '#333333',
+  '#1A1A1A',
+  '#000000',
+];
 
 interface Props {
   charges: Charge[]
