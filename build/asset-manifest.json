@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bidsight/static/css/main.9fefa440.css",
+    "main.js": "/bidsight/static/js/main.8636af02.js",
+    "static/js/787.598a0bc8.chunk.js": "/bidsight/static/js/787.598a0bc8.chunk.js",
+    "index.html": "/bidsight/index.html",
+    "main.9fefa440.css.map": "/bidsight/static/css/main.9fefa440.css.map",
+    "main.8636af02.js.map": "/bidsight/static/js/main.8636af02.js.map",
+    "787.598a0bc8.chunk.js.map": "/bidsight/static/js/787.598a0bc8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9fefa440.css",
+    "static/js/main.8636af02.js"
+  ]
+}
